@@ -15,7 +15,7 @@ const PrimaryNav = createStackNavigator(
   },
   {
     // Default config for all screens
-    initialRouteName: 'LoadingScreen',
+    // initialRouteName: 'LoadingScreen',
     headerMode: 'none',
     navigationOptions: {
       headerStyle: styles.header,

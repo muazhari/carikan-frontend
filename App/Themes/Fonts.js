@@ -1,4 +1,6 @@
-import Metrics from './Metrics'
+import MetricsTypes from './Metrics'
+
+const { set: {normal: Metrics} } = MetricsTypes
 
 const type = {
   // base: 'Avenir-Book',

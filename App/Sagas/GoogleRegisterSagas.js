@@ -1,9 +1,8 @@
 import { call, put } from 'redux-saga/effects'
-import firebase from 'firebase'
+import firebase from 'react-native-firebase'
 import { GoogleSignin } from 'react-native-google-signin'
-import { generateSecureRandom } from 'react-native-securerandom'
 import { sha256 } from 'react-native-sha256'
-
+import { generateSecureRandom } from 'react-native-securerandom'
 import AuthActions from '../Redux/AuthRedux'
 
 const generateSecurePassword = b => {
@@ -14,89 +13,51 @@ const generateSecurePassword = b => {
   })
 }
 
-const linkWithEmail = emailCredential => {
-  return new Promise(async (resolve, reject) => {
-    firebase
-      .auth()
-      .currentUser.linkWithCredential(emailCredential)
-      .then(result => {
-        return resolve(result)
-      })
-      .catch(err => {
-        return reject(err)
-      })
-  })
-}
-
 // attempts to google register
-export function* getGoogleRegister(fbdAPI, { resolve, reject }) {
+export function* getGoogleRegister(fbaAPI, fbdAPI) {
   try {
     yield call(GoogleSignin.hasPlayServices, {
       autoResolve: true,
       showPlayServicesUpdateDialog: true,
     })
 
-    try {
-      const authGoogleResult = yield call(GoogleSignin.signIn)
+    const auth = firebase.auth()
+    const authGoogleResult = yield call(GoogleSignin.signIn)
+    // anonymus credential
+    let result = yield call(fbaAPI.currentUser)
 
-      // setting up 'google.com' provider credential to be used.
-      const googleCredential = yield call(
-        firebase.auth.GoogleAuthProvider.credential,
+    // check registered auth provider.
+    const provider = yield call(
+      [auth, auth.fetchSignInMethodsForEmail],
+      authGoogleResult.user.email
+    )
+
+    // try signin with 'google.com' provider
+    if (provider.includes('google.com')) {
+      result = yield call(
+        fbaAPI.signInWithGoogle,
         authGoogleResult.idToken,
         authGoogleResult.accessToken
       )
-
-      const securePassword = yield call(generateSecurePassword, 48)
-
-      // setting up 'email' provider credential to be used.
-      const emailCredential = yield call(
-        firebase.auth.EmailAuthProvider.credential,
-        authGoogleResult.user.email,
-        securePassword
-      )
-
-      const auth = firebase.auth()
-
-      // try signin with 'google.com' provider
-      let result = yield call([auth, auth.signInWithCredential], googleCredential)
-
-      // check registered auth provider.
-      const provider = yield call(
-        [auth, auth.fetchSignInMethodsForEmail],
-        authGoogleResult.user.email
-      )
-
-      // try signin with 'email' provider if doesn't linked yet
-      if (!provider.includes('password')) {
-        result = yield call(linkWithEmail, emailCredential)
-      }
-
-      // return true if user hasn't been set their username for the first time.
-      const isNewUser = yield call(fbdAPI.readProfile, auth.currentUser.uid, 'isNewUser')
-
-      // route back user hasn't been set a username, based on isNewUser profile property.
-      if (isNewUser) {
-        yield call(resolve, { isNewUser: true })
-      } else {
-        // doing database works, pushing important & profile data.
-        yield call(fbdAPI.newProfilePush, auth)
-
-        yield put({ type: 'AUTH_SUCCESS' })
-      }
-
+      yield put(AuthActions.loginSuccess(result.user))
+      console.tron.log(`Firebase signin success. ${result.user.email}`)
+    } else {
+      result = yield call(fbaAPI.authNewGoogleUser, {
+        email: authGoogleResult.user.email,
+        idToken: authGoogleResult.idToken,
+        accessToken: authGoogleResult.accessToken,
+      })
+      // doing database works, pushing important & profile data.
+      yield call(fbdAPI.newProfilePush, result.user)
       yield put(AuthActions.registerSuccess(result.user))
       console.tron.log(`Firebase register success. ${result.user.email}`)
-    } catch (err) {
-      const error = { code: err.code, message: err.message }
-      yield put(AuthActions.registerFailure(error))
-      yield put(AuthActions.logoutRequest())
-      console.tron.log(`Firebase register failed. ${error.message}`)
     }
+
+    yield put({ type: 'AUTH_SUCCESS' })
   } catch (err) {
     const error = { code: err.code, message: err.message }
     yield put(AuthActions.registerFailure(error))
-    yield call(reject)
 
-    console.tron.log('Play services error', err.code, err.message)
+    console.tron.log(`Firebase register failed. ${err}`)
   }
 }

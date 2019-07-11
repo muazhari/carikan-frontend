@@ -1,9 +1,8 @@
 import { call, put, select } from 'redux-saga/effects'
-import firebase from 'firebase'
+import firebase from 'react-native-firebase'
 import { GoogleSignin } from 'react-native-google-signin'
+import { AsyncStorage } from 'react-native'
 import AuthActions, { AuthSelectors } from '../Redux/AuthRedux'
-import Utils from '../Config/Utils'
-import SocketUtils from '../Services/SocketUtils'
 
 export const { selectIsLoggedIn } = AuthSelectors
 
@@ -22,10 +21,9 @@ export function* getLogout() {
         yield call(GoogleSignin.signOut)
       }
 
-      yield call(SocketUtils.emitClientDisconnect)
-      yield call(Utils.setUserId, null)
-
-      yield put(AuthActions.logoutSuccess())
+      // yield call(AsyncStorage.clear)
+      const result = yield call([auth, auth.signInAnonymously])
+      yield put(AuthActions.logoutSuccess(result.user))
 
       console.tron.log('Firebase logout success.')
     }

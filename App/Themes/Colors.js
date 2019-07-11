@@ -26,6 +26,9 @@ const colors = {
   oxford: '#707070',
   night: 'rgb(11, 34, 90)',
   gold: 'rgb(255, 247, 8)',
+  sea: '#48A2F8',
+  // haze: '#F1F2F5',
+  haze: '#EDEFF2',
 }
 
 export default colors

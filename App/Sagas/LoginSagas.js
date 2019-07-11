@@ -1,30 +1,49 @@
 import { call, put } from 'redux-saga/effects'
-import firebase from 'firebase'
+import firebase from 'react-native-firebase'
+import { sha256 } from 'react-native-sha256'
+import { generateSecureRandom } from 'react-native-securerandom'
 import AuthActions from '../Redux/AuthRedux'
-// import { getAuthed } from './AuthedSagas'
+
+const generateSecurePassword = b => {
+  return generateSecureRandom(b).then(randomBytes => {
+    return sha256(Object.values(randomBytes).join('')).then(hash => {
+      return hash
+    })
+  })
+}
 
 // attempts to signin
-export function* getLogin({ username, password }) {
+export function* getLogin(fbaAPI, fbdAPI, { email, password }) {
+  // const email = `${yield call(generateSecurePassword, 10)}@gmail.com`
   try {
+    console.tron.log(email, password)
     const auth = firebase.auth()
+    // anonymus credential
+    let result = yield call(fbaAPI.currentUser)
     // check registered auth provider.
-    const provider = yield call([auth, auth.fetchSignInMethodsForEmail], username)
+    const provider = yield call([auth, auth.fetchSignInMethodsForEmail], email)
+
     // try signin with 'email' provider if doesn't linked yet
-    if (provider.includes('google.com')) {
-      throw new Error('You are registered from Google, try reset password to change it')
-    }
+    if (provider.includes('password')) {
+      result = yield call(fbaAPI.signInWithEmail, email, password)
 
-    if (provider.length > 0 || provider.includes('password')) {
-      const result = yield call([auth, auth.signInWithEmailAndPassword], username, password)
       yield put(AuthActions.loginSuccess(result.user))
-      // yield call(getAuthed)
-
       console.tron.log(`Firebase signin success. ${result.user.email}`)
+    } else {
+      result = yield call(fbaAPI.linkWithEmail, email, password)
+      // doing database works, pushing important & profile data.
+      yield call(fbdAPI.newProfilePush, result.user)
+
+      yield put(AuthActions.registerSuccess(result.user))
+      console.tron.log(`Firebase signup success. ${result.email}`)
     }
+
+    yield put({ type: 'AUTH_SUCCESS' })
   } catch (err) {
     const error = { code: err.code, message: err.message }
+    yield put(AuthActions.logoutRequest())
     yield put(AuthActions.loginFailure(error))
 
-    console.tron.log(`Firebase signin failed. ${error.message}`)
+    console.tron.log(`Firebase signin failed. ${{ ...err }}`)
   }
 }

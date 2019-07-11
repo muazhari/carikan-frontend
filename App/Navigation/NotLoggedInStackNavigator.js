@@ -1,7 +1,6 @@
 import { createStackNavigator } from 'react-navigation'
 import { zoomIn, zoomOut, fromLeft, fromRight, fadeIn, fadeOut } from 'react-navigation-transitions'
 
-import LoadingScreen from '../Containers/LoadingScreen'
 import SigninScreen from '../Containers/SigninScreen'
 import SignupScreen from '../Containers/SignupScreen'
 import SignupUsernameScreen from '../Containers/SignupUsernameScreen'
@@ -48,10 +47,6 @@ export default createStackNavigator(
     },
     SigninScreen: {
       screen: SigninScreen,
-      navigationOptions: {},
-    },
-    LoadingScreen: {
-      screen: LoadingScreen,
       navigationOptions: {},
     },
   },

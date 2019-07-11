@@ -16,7 +16,11 @@ const styles = StyleSheet.create({
 export default function(props) {
   const { style, ...otherProps } = props
 
-  const styleMerger = [Platform.OS === 'ios' ? styles.IOS_height : styles.Android_height, style]
+  const styleMerger = [
+    Platform.OS === 'ios' ? styles.IOS_height : styles.Android_height,
+    { zIndex: 1, position: 'absolute' },
+    style,
+  ]
 
   return (
     <View style={styleMerger}>

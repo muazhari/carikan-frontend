@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects'
-import firebase from 'firebase'
+import firebase from 'react-native-firebase'
 import ProfileActions from '../Redux/ProfileRedux'
 
 // attempts to google register

@@ -6,7 +6,7 @@ import Config from './DebugConfig'
 
 if (Config.useReactotron) {
   // https://github.com/infinitered/reactotron for more options!
-  Reactotron.configure({ host: '192.168.43.208', name: 'Carikan App' })
+  Reactotron.configure({ host: '192.168.43.208', name: 'What is Time?' })
     .useReactNative()
     .use(reduxPlugin({ onRestore: Immutable }))
     .use(sagaPlugin())

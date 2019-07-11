@@ -1,25 +1,23 @@
 import { call, put, select, take } from 'redux-saga/effects'
-import firebase from 'firebase'
+import firebase from 'react-native-firebase'
 import AuthActions, { AuthSelectors } from '../Redux/AuthRedux'
-
-import Utils from '../Config/Utils'
-// import SocketUtils from '../Services/SocketUtils'
 
 export const { selectIsLoggedIn, selectGetCredential } = AuthSelectors
 
 // attempts to signin
-export function* getAuthed(action) {
+export function* getAuthed() {
   const isLoggedIn = yield select(selectIsLoggedIn)
   const authCredential = yield select(selectGetCredential)
 
   try {
     if (isLoggedIn) {
-      // Utils.setUserId(authCredential.email)
-      // SocketUtils.emitJoinLobby('mainLobby', authCredential.email)
       yield put({ type: 'AUTH_SUCCESS' })
-      console.tron.log(`Utils.getUserId() ✨${Utils.getUserId()}. ✨`)
+      // console.tron.log(`authCredential.email ✨${authCredential.email}. ✨`)
+    } else {
+      yield put({ type: 'AUTH_NULL' })
     }
   } catch (err) {
-    console.tron.log(`Utils.getUserId() failed. ${err.message}`)
+    const error = { code: err.code, message: err.message }
+    console.tron.log(`authCredential.email failed. ${error}`)
   }
 }

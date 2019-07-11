@@ -6,14 +6,14 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   googleLoginRequest: null,
   googleRegisterRequest: ['resolve', 'reject'],
-  loginRequest: ['username', 'password'],
+  loginRequest: ['email', 'password'],
   loginSuccess: ['credential'],
   loginFailure: ['error'],
   registerRequest: ['email', 'password', 'resolve', 'reject'],
   registerSuccess: ['credential'],
   registerFailure: ['error'],
   logoutRequest: null,
-  logoutSuccess: null,
+  logoutSuccess: ['credential'],
   logoutFailure: ['error'],
   autoLogin: ['credential'],
 })
@@ -47,8 +47,8 @@ export const failure = (state, { error }) => {
 }
 
 // we've logged out
-export const logoutSuccess = () => {
-  return { ...INITIAL_STATE }
+export const logoutSuccess = (state, { credential }) => {
+  return { ...INITIAL_STATE, credential }
 }
 
 // startup saga invoked autoLogin
