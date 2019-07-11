@@ -29,7 +29,7 @@ const LOGGED_IN_STATE = getStateForAction(
 // const navigateTo = routeName => () => navigate({ routeName })
 
 export const reducer = (state = INITIAL_STATE, action) => {
-  console.tron.log(`[Navigation Redux] Action Type listened : ${action.type}`)
+  // console.tron.log(`[Navigation Redux] Action Type listened : ${action.type}`)
   let newState
   switch (action.type) {
     case 'AUTH_ANONYMOUS':

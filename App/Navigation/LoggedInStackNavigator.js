@@ -91,12 +91,17 @@ class a extends React.Component {
     MetricsTypes.updateMetrics()
     this.forceUpdate()
     console.tron.log(
-      JSON.stringify({
+      `Seharusnya -> ${JSON.stringify({
         height: MetricsTypes.set.normal.screenHeight,
         width: MetricsTypes.set.normal.screenWidth,
-      })
+      })} (Tanpa Destructuring)`
     )
-    console.tron.log(JSON.stringify({ height: Metrics.screenHeight, width: Metrics.screenWidth }))
+    console.tron.log(
+      `Tapi -> ${JSON.stringify({
+        height: Metrics.screenHeight,
+        width: Metrics.screenWidth,
+      })} (Dengan Destructuring)`
+    )
   }
 
   render() {
@@ -108,18 +113,26 @@ class a extends React.Component {
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: 'red',
-            height: Metrics.screenHeight,
-            width: Metrics.screenWidth,
+            height: MetricsTypes.set.normal.screenHeight,
+            width: MetricsTypes.set.normal.screenWidth,
           }}>
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen A</Text>
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {JSON.stringify({ height: Metrics.screenHeight, width: Metrics.screenWidth })}
+            Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
+            terload, di forceUpdate tidak berpengaruh
           </Text>
+
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {JSON.stringify({
+            {`${JSON.stringify({
               height: MetricsTypes.set.normal.screenHeight,
               width: MetricsTypes.set.normal.screenWidth,
-            })}
+            })} (Tanpa Destructuring)`}
+          </Text>
+          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+            {` ${JSON.stringify({
+              height: Metrics.screenHeight,
+              width: Metrics.screenWidth,
+            })} (Dengan Destructuring)`}
           </Text>
         </View>
       </ScrollView>
@@ -132,12 +145,17 @@ class b extends React.Component {
     MetricsTypes.updateMetrics()
     this.forceUpdate()
     console.tron.log(
-      JSON.stringify({
+      `Seharusnya -> ${JSON.stringify({
         height: MetricsTypes.set.normal.screenHeight,
         width: MetricsTypes.set.normal.screenWidth,
-      })
+      })} (Tanpa Destructuring)`
     )
-    console.tron.log(JSON.stringify({ height: Metrics.screenHeight, width: Metrics.screenWidth }))
+    console.tron.log(
+      `Tapi -> ${JSON.stringify({
+        height: Metrics.screenHeight,
+        width: Metrics.screenWidth,
+      })} (Dengan Destructuring)`
+    )
   }
 
   render() {
@@ -149,18 +167,26 @@ class b extends React.Component {
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: 'green',
-            height: Metrics.screenHeight,
-            width: Metrics.screenWidth,
+            height: MetricsTypes.set.normal.screenHeight,
+            width: MetricsTypes.set.normal.screenWidth,
           }}>
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen B</Text>
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {JSON.stringify({ height: Metrics.screenHeight, width: Metrics.screenWidth })}
+            Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
+            terload, di forceUpdate tidak berpengaruh
           </Text>
+
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {JSON.stringify({
+            {`${JSON.stringify({
               height: MetricsTypes.set.normal.screenHeight,
               width: MetricsTypes.set.normal.screenWidth,
-            })}
+            })} (Tanpa Destructuring)`}
+          </Text>
+          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+            {` ${JSON.stringify({
+              height: Metrics.screenHeight,
+              width: Metrics.screenWidth,
+            })} (Dengan Destructuring)`}
           </Text>
         </View>
       </ScrollView>
@@ -173,12 +199,17 @@ class c extends React.Component {
     MetricsTypes.updateMetrics()
     this.forceUpdate()
     console.tron.log(
-      JSON.stringify({
+      `Seharusnya -> ${JSON.stringify({
         height: MetricsTypes.set.normal.screenHeight,
         width: MetricsTypes.set.normal.screenWidth,
-      })
+      })} (Tanpa Destructuring)`
     )
-    console.tron.log(JSON.stringify({ height: Metrics.screenHeight, width: Metrics.screenWidth }))
+    console.tron.log(
+      `Tapi -> ${JSON.stringify({
+        height: Metrics.screenHeight,
+        width: Metrics.screenWidth,
+      })} (Dengan Destructuring)`
+    )
   }
 
   render() {
@@ -190,18 +221,26 @@ class c extends React.Component {
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: 'blue',
-            height: Metrics.screenHeight,
-            width: Metrics.screenWidth,
+            height: MetricsTypes.set.normal.screenHeight,
+            width: MetricsTypes.set.normal.screenWidth,
           }}>
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen C</Text>
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {JSON.stringify({ height: Metrics.screenHeight, width: Metrics.screenWidth })}
+            Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
+            terload, di forceUpdate tidak berpengaruh
           </Text>
+
           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {JSON.stringify({
+            {`${JSON.stringify({
               height: MetricsTypes.set.normal.screenHeight,
               width: MetricsTypes.set.normal.screenWidth,
-            })}
+            })} (Tanpa Destructuring)`}
+          </Text>
+          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+            {` ${JSON.stringify({
+              height: Metrics.screenHeight,
+              width: Metrics.screenWidth,
+            })} (Dengan Destructuring)`}
           </Text>
         </View>
       </ScrollView>
