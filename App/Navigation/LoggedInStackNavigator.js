@@ -104,11 +104,17 @@ class a extends React.Component {
     )
   }
 
+  componentWillReceiveProps(prevProps, nextProps) {
+    MetricsTypes.updateMetrics()
+    this.forceUpdate()
+    console.tron.log(`${prevProps}, ${nextProps}`)
+  }
+
   render() {
     return (
       <ScrollView style={{ flex: 1 }}>
         <View
-          onLayout={this.handleOnRotate}
+          // onLayout={this.handleOnRotate}
           style={{
             justifyContent: 'center',
             alignItems: 'center',
@@ -142,7 +148,7 @@ class a extends React.Component {
 
 class b extends React.Component {
   handleOnRotate = e => {
-    MetricsTypes.updateMetrics()
+    // MetricsTypes.updateMetrics()
     this.forceUpdate()
     console.tron.log(
       `Seharusnya -> ${JSON.stringify({
@@ -188,6 +194,11 @@ class b extends React.Component {
               width: Metrics.screenWidth,
             })} (Dengan Destructuring)`}
           </Text>
+          <Button
+            onPress={e => {
+              this.handleOnRotate()
+            }}
+          />
         </View>
       </ScrollView>
     )
@@ -195,8 +206,13 @@ class b extends React.Component {
 }
 
 class c extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { color: 'blue' }
+  }
+
   handleOnRotate = e => {
-    MetricsTypes.updateMetrics()
+    // MetricsTypes.updateMetrics()
     this.forceUpdate()
     console.tron.log(
       `Seharusnya -> ${JSON.stringify({
@@ -220,7 +236,7 @@ class c extends React.Component {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'blue',
+            backgroundColor: this.state.color,
             height: MetricsTypes.set.normal.screenHeight,
             width: MetricsTypes.set.normal.screenWidth,
           }}>
@@ -242,6 +258,12 @@ class c extends React.Component {
               width: Metrics.screenWidth,
             })} (Dengan Destructuring)`}
           </Text>
+          <Button
+            onPress={e => {
+              this.setState({ color: 'yellow' })
+              this.handleOnRotate()
+            }}
+          />
         </View>
       </ScrollView>
     )
