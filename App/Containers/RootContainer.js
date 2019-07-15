@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View, StatusBar } from 'react-native'
+import { View, StatusBar, Dimensions, Platform } from 'react-native'
 import { connect } from 'react-redux'
+import Orientation from 'react-native-orientation'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import StartupActions from '../Redux/StartupRedux'
 
@@ -23,10 +24,12 @@ class RootContainer extends Component {
     }
   }
 
-  // componentWillReceiveProps(prevProps, nextProps) {
-  //   MetricsTypes.updateMetrics()
-  //   this.forceUpdate()
-  //   console.tron.log('${prevProps}, ${nextProps}')
+  // componentWillMount() {
+  //   Orientation.addOrientationListener(this.handleOnRotate)
+  // }
+  //
+  // componentWillUnmount() {
+  //   Orientation.removeOrientationListener(this.handleOnRotate)
   // }
 
   handleOnRotate = e => {

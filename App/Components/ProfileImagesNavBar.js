@@ -5,7 +5,9 @@ import { Text, Icon } from 'react-native-elements'
 
 import { Images, MetricsTypes, Colors, Fonts } from '../Themes'
 
-const { set: {tabNav: Metrics} } = MetricsTypes
+const {
+  set: { tabNav: Metrics },
+} = MetricsTypes
 
 // import styles from './Styles/ProfileImageNavBarStyles'
 

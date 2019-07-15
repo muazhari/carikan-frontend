@@ -42,18 +42,19 @@ class ProfileScreen extends React.Component {
     this.state = {
       postText: '',
       contentData: [
-        // {
-        //   photoURL: 'a',
-        //   displayName: 'Ragil',
-        //   message:
-        //     'halo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karr ',
-        //   timeStamp: '93',
-        // },
         {
           photoURL: 'a',
-          displayName: 'Ragil',
-          message: JSON.stringify({ ...MetricsTypes.set.tabNav }),
-          timeStamp: '93',
+          displayName: 'Ragilaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          message:
+            'halo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karr ',
+          timeStamp: Date.now(),
+        },
+        {
+          photoURL: 'a',
+          displayName: 'Ragilaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          message:
+            'halo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karrhalo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karrhalo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karrhalo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karr ',
+          timeStamp: Date.now() + 1,
         },
       ],
     }
@@ -76,15 +77,16 @@ class ProfileScreen extends React.Component {
   }
 
   handlePostTextSubmit = () => {
-    console.tron.log(this.state.contentData)
     const { postText } = this.state
     const { photoURL, displayName } = this.props.credential
-    this.setState(prevState => ({
-      contentData: [
-        { photoURL, displayName, message: postText, timeStamp: Date.now() },
-        ...prevState.contentData,
-      ],
-    }))
+    if (postText) {
+      this.setState(prevState => ({
+        contentData: [
+          { photoURL, displayName, message: postText, timeStamp: Date.now() },
+          ...prevState.contentData,
+        ],
+      }))
+    }
   }
 
   render() {

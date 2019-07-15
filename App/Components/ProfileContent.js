@@ -1,14 +1,55 @@
 import React from 'react'
-import { View, ActivityIndicator, TouchableOpacity } from 'react-native'
-// import Moment from 'react-moment'
+import { View, ActivityIndicator, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import Moment from 'react-moment'
 
 import { Text, Image } from 'react-native-elements'
 
+import ReadMore from 'react-native-read-more-text'
+
 import { Images, MetricsTypes, Colors, Fonts } from '../Themes'
 
-const { set: {tabNav: Metrics} } = MetricsTypes
+const {
+  set: { tabNav: Metrics },
+} = MetricsTypes
 
 // import styles from './Styles/ProfileContentStyles'
+
+const TextContentBar = props => {
+  return (
+    <Text numberOfLines={props.numberOfLines || 1} style={props.style} {...props.otherProps}>
+      {props.children}
+    </Text>
+  )
+}
+
+const TextContent = props => {
+  const renderTruncatedFooter = handlePress => {
+    return (
+      <Text style={{ color: Colors.sea, marginTop: 5 }} onPress={handlePress}>
+        Read more
+      </Text>
+    )
+  }
+
+  const renderRevealedFooter = handlePress => {
+    return (
+      <Text style={{ color: Colors.sea, marginTop: 5 }} onPress={handlePress}>
+        Show less
+      </Text>
+    )
+  }
+
+  return (
+    <ReadMore
+      style={props.style}
+      numberOfLines={props.numberOfLines || 3}
+      renderTruncatedFooter={renderTruncatedFooter}
+      renderRevealedFooter={renderRevealedFooter}
+      {...props.otherProps}>
+      {props.children}
+    </ReadMore>
+  )
+}
 
 export default class ProfileContent extends React.Component {
   constructor(props) {
@@ -71,23 +112,36 @@ export default class ProfileContent extends React.Component {
         <View
           style={{
             flexDirection: 'column',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
             marginRight: Metrics.screenWidth * 0.2,
           }}>
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              alignItems: 'space-between',
+              alignItems: 'center',
+              width: Metrics.screenWidth * 0.7,
             }}>
-            <Text style={{ fontSize: Fonts.size.regular, fontWeight: 'bold' }}>{displayName}</Text>
+            <TextContentBar
+              style={{
+                flex: 1,
+                fontSize: Fonts.size.regular,
+                fontWeight: 'bold',
+              }}>
+              {displayName}
+            </TextContentBar>
 
-            {/* <Moment style={{ fontSize: Fonts.size.regular }} fromNow>
+            <Moment
+              style={{
+                textAlign: 'right',
+                flex: 1,
+                fontSize: Fonts.size.small,
+              }}
+              element={TextContentBar}
+              fromNow>
               {timeStamp}
-            </Moment> */}
+            </Moment>
           </View>
-          <Text style={{}}>{message}</Text>
+          <TextContent>{message}</TextContent>
         </View>
       </TouchableOpacity>
     )

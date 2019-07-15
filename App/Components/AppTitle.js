@@ -11,11 +11,11 @@ const AppTitle = props => {
   let { subMessages } = props
 
   if (!subMessages) {
-    subMessages = [{ id: 0, msg: 'i hope you are happy' }]
+    subMessages = [{ id: 0, msg: 'Gotong royong kuy' }]
   }
   return (
     <View style={[styles.containerText, props.containerStyle]}>
-      <Text style={[styles.h1Text, props.h1Style]}>What is time?</Text>
+      <Text style={[styles.h1Text, props.h1Style]}>Carikan</Text>
       {subMessages.map(m => (
         <Text key={m.id} style={[styles.subText, props.subStyle]}>
           {m.msg}

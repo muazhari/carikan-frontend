@@ -10,7 +10,9 @@ import { Images, MetricsTypes, Colors } from '../Themes'
 import StatusBar from '../Components/StatusBar'
 import AppTitle from '../Components/AppTitle'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 class InitialScreen extends React.Component {
   constructor(props) {

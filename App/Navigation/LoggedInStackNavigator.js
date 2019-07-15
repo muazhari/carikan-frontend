@@ -85,207 +85,207 @@ const tabBarOptions = {
   //   alignItems: 'center',
   // },
 }
-
-class a extends React.Component {
-  handleOnRotate = e => {
-    MetricsTypes.updateMetrics()
-    this.forceUpdate()
-    console.tron.log(
-      `Seharusnya -> ${JSON.stringify({
-        height: MetricsTypes.set.normal.screenHeight,
-        width: MetricsTypes.set.normal.screenWidth,
-      })} (Tanpa Destructuring)`
-    )
-    console.tron.log(
-      `Tapi -> ${JSON.stringify({
-        height: Metrics.screenHeight,
-        width: Metrics.screenWidth,
-      })} (Dengan Destructuring)`
-    )
-  }
-
-  componentWillReceiveProps(prevProps, nextProps) {
-    MetricsTypes.updateMetrics()
-    this.forceUpdate()
-    console.tron.log(`${prevProps}, ${nextProps}`)
-  }
-
-  render() {
-    return (
-      <ScrollView style={{ flex: 1 }}>
-        <View
-          // onLayout={this.handleOnRotate}
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'red',
-            height: MetricsTypes.set.normal.screenHeight,
-            width: MetricsTypes.set.normal.screenWidth,
-          }}>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen A</Text>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
-            terload, di forceUpdate tidak berpengaruh
-          </Text>
-
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {`${JSON.stringify({
-              height: MetricsTypes.set.normal.screenHeight,
-              width: MetricsTypes.set.normal.screenWidth,
-            })} (Tanpa Destructuring)`}
-          </Text>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {` ${JSON.stringify({
-              height: Metrics.screenHeight,
-              width: Metrics.screenWidth,
-            })} (Dengan Destructuring)`}
-          </Text>
-        </View>
-      </ScrollView>
-    )
-  }
-}
-
-class b extends React.Component {
-  handleOnRotate = e => {
-    // MetricsTypes.updateMetrics()
-    this.forceUpdate()
-    console.tron.log(
-      `Seharusnya -> ${JSON.stringify({
-        height: MetricsTypes.set.normal.screenHeight,
-        width: MetricsTypes.set.normal.screenWidth,
-      })} (Tanpa Destructuring)`
-    )
-    console.tron.log(
-      `Tapi -> ${JSON.stringify({
-        height: Metrics.screenHeight,
-        width: Metrics.screenWidth,
-      })} (Dengan Destructuring)`
-    )
-  }
-
-  render() {
-    return (
-      <ScrollView style={{ flex: 1 }}>
-        <View
-          onLayout={this.handleOnRotate}
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'green',
-            height: MetricsTypes.set.normal.screenHeight,
-            width: MetricsTypes.set.normal.screenWidth,
-          }}>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen B</Text>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
-            terload, di forceUpdate tidak berpengaruh
-          </Text>
-
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {`${JSON.stringify({
-              height: MetricsTypes.set.normal.screenHeight,
-              width: MetricsTypes.set.normal.screenWidth,
-            })} (Tanpa Destructuring)`}
-          </Text>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {` ${JSON.stringify({
-              height: Metrics.screenHeight,
-              width: Metrics.screenWidth,
-            })} (Dengan Destructuring)`}
-          </Text>
-          <Button
-            onPress={e => {
-              this.handleOnRotate()
-            }}
-          />
-        </View>
-      </ScrollView>
-    )
-  }
-}
-
-class c extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { color: 'blue' }
-  }
-
-  handleOnRotate = e => {
-    // MetricsTypes.updateMetrics()
-    this.forceUpdate()
-    console.tron.log(
-      `Seharusnya -> ${JSON.stringify({
-        height: MetricsTypes.set.normal.screenHeight,
-        width: MetricsTypes.set.normal.screenWidth,
-      })} (Tanpa Destructuring)`
-    )
-    console.tron.log(
-      `Tapi -> ${JSON.stringify({
-        height: Metrics.screenHeight,
-        width: Metrics.screenWidth,
-      })} (Dengan Destructuring)`
-    )
-  }
-
-  render() {
-    return (
-      <ScrollView style={{ flex: 1 }}>
-        <View
-          onLayout={this.handleOnRotate}
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: this.state.color,
-            height: MetricsTypes.set.normal.screenHeight,
-            width: MetricsTypes.set.normal.screenWidth,
-          }}>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen C</Text>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
-            terload, di forceUpdate tidak berpengaruh
-          </Text>
-
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {`${JSON.stringify({
-              height: MetricsTypes.set.normal.screenHeight,
-              width: MetricsTypes.set.normal.screenWidth,
-            })} (Tanpa Destructuring)`}
-          </Text>
-          <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
-            {` ${JSON.stringify({
-              height: Metrics.screenHeight,
-              width: Metrics.screenWidth,
-            })} (Dengan Destructuring)`}
-          </Text>
-          <Button
-            onPress={e => {
-              this.setState({ color: 'yellow' })
-              this.handleOnRotate()
-            }}
-          />
-        </View>
-      </ScrollView>
-    )
-  }
-}
+//
+// class a extends React.Component {
+//   handleOnRotate = e => {
+//     MetricsTypes.updateMetrics()
+//     this.forceUpdate()
+//     console.tron.log(
+//       `Seharusnya -> ${JSON.stringify({
+//         height: MetricsTypes.set.normal.screenHeight,
+//         width: MetricsTypes.set.normal.screenWidth,
+//       })} (Tanpa Destructuring)`
+//     )
+//     console.tron.log(
+//       `Tapi -> ${JSON.stringify({
+//         height: Metrics.screenHeight,
+//         width: Metrics.screenWidth,
+//       })} (Dengan Destructuring)`
+//     )
+//   }
+//
+//   componentWillReceiveProps(prevProps, nextProps) {
+//     MetricsTypes.updateMetrics()
+//     this.forceUpdate()
+//     console.tron.log(`${prevProps}, ${nextProps}`)
+//   }
+//
+//   render() {
+//     return (
+//       <ScrollView style={{ flex: 1 }}>
+//         <View
+//           onLayout={this.handleOnRotate}
+//           style={{
+//             justifyContent: 'center',
+//             alignItems: 'center',
+//             backgroundColor: 'red',
+//             height: MetricsTypes.set.normal.screenHeight,
+//             width: MetricsTypes.set.normal.screenWidth,
+//           }}>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen A</Text>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
+//             terload, di forceUpdate tidak berpengaruh
+//           </Text>
+//
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             {`${JSON.stringify({
+//               height: MetricsTypes.set.normal.screenHeight,
+//               width: MetricsTypes.set.normal.screenWidth,
+//             })} (Tanpa Destructuring)`}
+//           </Text>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             {` ${JSON.stringify({
+//               height: Metrics.screenHeight,
+//               width: Metrics.screenWidth,
+//             })} (Dengan Destructuring)`}
+//           </Text>
+//         </View>
+//       </ScrollView>
+//     )
+//   }
+// }
+//
+// class b extends React.Component {
+//   handleOnRotate = e => {
+//     // MetricsTypes.updateMetrics()
+//     this.forceUpdate()
+//     console.tron.log(
+//       `Seharusnya -> ${JSON.stringify({
+//         height: MetricsTypes.set.normal.screenHeight,
+//         width: MetricsTypes.set.normal.screenWidth,
+//       })} (Tanpa Destructuring)`
+//     )
+//     console.tron.log(
+//       `Tapi -> ${JSON.stringify({
+//         height: Metrics.screenHeight,
+//         width: Metrics.screenWidth,
+//       })} (Dengan Destructuring)`
+//     )
+//   }
+//
+//   render() {
+//     return (
+//       <ScrollView style={{ flex: 1 }}>
+//         <View
+//           onLayout={this.handleOnRotate}
+//           style={{
+//             justifyContent: 'center',
+//             alignItems: 'center',
+//             backgroundColor: 'green',
+//             height: MetricsTypes.set.normal.screenHeight,
+//             width: MetricsTypes.set.normal.screenWidth,
+//           }}>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen B</Text>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
+//             terload, di forceUpdate tidak berpengaruh
+//           </Text>
+//
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             {`${JSON.stringify({
+//               height: MetricsTypes.set.normal.screenHeight,
+//               width: MetricsTypes.set.normal.screenWidth,
+//             })} (Tanpa Destructuring)`}
+//           </Text>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             {` ${JSON.stringify({
+//               height: Metrics.screenHeight,
+//               width: Metrics.screenWidth,
+//             })} (Dengan Destructuring)`}
+//           </Text>
+//           <Button
+//             onPress={e => {
+//               this.handleOnRotate()
+//             }}
+//           />
+//         </View>
+//       </ScrollView>
+//     )
+//   }
+// }
+//
+// class c extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = { color: 'blue' }
+//   }
+//
+//   handleOnRotate = e => {
+//     // MetricsTypes.updateMetrics()
+//     this.forceUpdate()
+//     console.tron.log(
+//       `Seharusnya -> ${JSON.stringify({
+//         height: MetricsTypes.set.normal.screenHeight,
+//         width: MetricsTypes.set.normal.screenWidth,
+//       })} (Tanpa Destructuring)`
+//     )
+//     console.tron.log(
+//       `Tapi -> ${JSON.stringify({
+//         height: Metrics.screenHeight,
+//         width: Metrics.screenWidth,
+//       })} (Dengan Destructuring)`
+//     )
+//   }
+//
+//   render() {
+//     return (
+//       <ScrollView style={{ flex: 1 }}>
+//         <View
+//           onLayout={this.handleOnRotate}
+//           style={{
+//             justifyContent: 'center',
+//             alignItems: 'center',
+//             backgroundColor: this.state.color,
+//             height: MetricsTypes.set.normal.screenHeight,
+//             width: MetricsTypes.set.normal.screenWidth,
+//           }}>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Screen C</Text>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             Dengan / Tanpa Destructuring, style tidak merefresh pada component, kecuali awal
+//             terload, di forceUpdate tidak berpengaruh
+//           </Text>
+//
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             {`${JSON.stringify({
+//               height: MetricsTypes.set.normal.screenHeight,
+//               width: MetricsTypes.set.normal.screenWidth,
+//             })} (Tanpa Destructuring)`}
+//           </Text>
+//           <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>
+//             {` ${JSON.stringify({
+//               height: Metrics.screenHeight,
+//               width: Metrics.screenWidth,
+//             })} (Dengan Destructuring)`}
+//           </Text>
+//           <Button
+//             onPress={e => {
+//               this.setState({ color: 'yellow' })
+//               this.handleOnRotate()
+//             }}
+//           />
+//         </View>
+//       </ScrollView>
+//     )
+//   }
+// }
 
 const LoggedInStackNavigator = createMaterialTopTabNavigator(
   {
     Buka: {
-      screen: a,
+      screen: BukaCarianScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => <TabIcon color={tintColor} label="Buka" />,
       },
     },
     Carian: {
-      screen: b,
+      screen: CarianPediaScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => <TabIcon color={tintColor} label="Carian" />,
       },
     },
     Profile: {
-      screen: c,
+      screen: ProfileScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => <TabIcon color={tintColor} label="Profile" />,
       },

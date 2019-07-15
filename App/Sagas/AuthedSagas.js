@@ -12,7 +12,7 @@ export function* getAuthed() {
   try {
     if (isLoggedIn) {
       yield put({ type: 'AUTH_SUCCESS' })
-      // console.tron.log(`authCredential.email ✨${authCredential.email}. ✨`)
+      console.tron.log(`authCredential.email ✨${authCredential.email}. ✨`)
     } else {
       yield put({ type: 'AUTH_NULL' })
     }

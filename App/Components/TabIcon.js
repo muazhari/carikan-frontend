@@ -12,9 +12,9 @@ const {
 } = MetricsTypes
 
 const iconMap = {
-  Buka: { name: 'logo-google', type: 'ionicon', color: Colors.silver },
-  Carian: { name: 'logo-facebook', type: 'ionicon', color: Colors.silver },
-  Profile: { name: 'logo-octocat', type: 'ionicon', color: Colors.silver },
+  Buka: { name: 'ios-qr-scanner', type: 'ionicon', color: Colors.silver },
+  Carian: { name: 'ios-search', type: 'ionicon', color: Colors.silver },
+  Profile: { name: 'ios-person', type: 'ionicon', color: Colors.silver },
 }
 
 const TabIcon = props => {
@@ -22,7 +22,6 @@ const TabIcon = props => {
   const { name, type, color, size } = iconMap[label]
 
   return (
-    // <TouchyScale>
     <Icon
       color={props.color ? props.color : color}
       size={Metrics.screenRatio * 30 || size}
@@ -30,7 +29,6 @@ const TabIcon = props => {
       type={type || null}
       {...otherProps}
     />
-    // {/* </TouchyScale> */}
   )
 }
 

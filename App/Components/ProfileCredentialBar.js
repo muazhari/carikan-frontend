@@ -8,7 +8,9 @@ import Swiper from 'react-native-swiper'
 
 import { Images, MetricsTypes, Colors, Fonts } from '../Themes'
 
-const { set: {tabNav: Metrics} } = MetricsTypes
+const {
+  set: { tabNav: Metrics },
+} = MetricsTypes
 
 // import styles from './Styles/ProfileCredentialBarStyles'
 
