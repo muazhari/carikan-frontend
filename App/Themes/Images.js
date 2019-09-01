@@ -21,7 +21,7 @@ const Images = {
   backButton: require('../Assets/Icons/back-button.png'),
   closeButton: require('../Assets/Icons/close-button.png'),
   initialBG: require('../Assets/Images/initial-bg.png'),
-  initialLogo: require('../Assets/Images/initial-logo.png'),
+  initialLogo: require('../Assets/Images/initial-logo.png')
 }
 
 export default Images

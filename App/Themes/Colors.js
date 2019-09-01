@@ -1,4 +1,5 @@
 const colors = {
+  ink: '#000',
   background: '#1F0808',
   clear: 'rgba(0,0,0,0)',
   facebook: '#3b5998',
@@ -26,6 +27,8 @@ const colors = {
   oxford: '#707070',
   night: 'rgb(11, 34, 90)',
   gold: 'rgb(255, 247, 8)',
+  sky: '#48A2F8',
+  haze: '#EDEFF2',
 }
 
 export default colors

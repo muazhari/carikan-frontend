@@ -1,38 +1,81 @@
 import { Dimensions, Platform } from 'react-native'
+import React from 'react'
 
-const { width, height } = Dimensions.get('window')
+class MetricsTypes {
+  constructor() {
+    this.set = {}
+    this.updateMetrics()
+  }
 
-const sw = width < height ? width : height
-const sh = width < height ? height : width
+  updateMetrics = () => {
+    this.set = { normal: this.normalMetrics(), tabNav: this.tabNavMetrics() }
+    // console.tron.log('Metrics Updated', this.set)
+    // console.tron.log({ width, height }, { sw_Normal, sh_Normal, sr_Normal })
+  }
 
-// Used via Metrics.baseMargin
-const metrics = {
-  screenWidth: sw,
-  screenHeight: sh,
-  screenRatio: (sw + sh) / 1000,
-  marginHorizontal: 10,
-  marginVertical: 10,
-  section: 25,
-  baseMargin: sh * 0.013, // 10
-  doubleBaseMargin: sh * 0.013 * 2, // 20
-  smallMargin: 5,
-  doubleSection: 50,
-  horizontalLineHeight: 1,
-  navBarHeight: Platform.OS === 'ios' ? 64 : 54,
-  buttonRadius: 4,
-  icons: {
-    tiny: 15,
-    small: 20,
-    medium: 30,
-    large: 45,
-    xl: 50,
-  },
-  images: {
-    small: 20,
-    medium: 40,
-    large: 60,
-    logo: 200,
-  },
+  getSet = () => {
+    return this.set
+  }
+
+  getScreen = () => {
+    const { width, height } = Dimensions.get('window')
+    const sr_Normal = (width + height) / 1000
+    const sw_Normal = width
+    const sh_Normal = height
+    // const sw_Normal = width < height ? width : height
+    // const sh_Normal = width < height ? height : width
+
+    return { sw_Normal, sh_Normal, sr_Normal }
+  }
+
+  // Used via Metrics.baseMargin
+  getMetrics = tabnavHeight => {
+    const { sw_Normal, sh_Normal, sr_Normal } = this.getScreen()
+
+    const sh = sh_Normal - tabnavHeight
+    const sw = sw_Normal
+    const sr = sw < sh ? sr_Normal : (tabnavHeight + sw) / 1000
+
+    const specificMetrics = {
+      screenWidth: sw,
+      screenHeight: sh,
+      screenRatio: sr,
+      marginHorizontal: 10,
+      marginVertical: 10,
+      section: 25,
+      baseMargin: sr * 10, // 10
+      doubleBaseMargin: sr * 20, // 20
+      smallMargin: sr * 5,
+      doubleSection: sr * 50,
+      horizontalLineHeight: 1,
+      navBarHeight: tabnavHeight,
+      // navBarRatio: ,
+      buttonRadius: sr * 4,
+      icons: {
+        tiny: sr * 15,
+        small: sr * 20,
+        medium: sr * 30,
+        large: sr * 45,
+        xl: sr * 50,
+      },
+      images: {
+        small: sr * 20,
+        medium: sr * 40,
+        large: sr * 60,
+        logo: sr * 200,
+      },
+    }
+
+    return specificMetrics
+  }
+
+  normalMetrics = () => this.getMetrics(0)
+
+  tabNavMetrics = () => {
+    const { sh_Normal } = this.getScreen()
+    const tabnavHeight = Platform.OS === 'ios' ? sh_Normal * 0.07 : sh_Normal * 0.08
+    return this.getMetrics(tabnavHeight)
+  }
 }
 
-export default metrics
+export default new MetricsTypes()

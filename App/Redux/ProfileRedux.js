@@ -6,7 +6,7 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   requestSetUsername: null,
   SuccessSetUsername: ['username'],
-  FailureSetUsername: ['error'],
+  FailureSetUsername: ['error']
 })
 
 export const ProfileTypes = Types
@@ -17,7 +17,7 @@ export default Creators
 export const INITIAL_STATE = Immutable({
   profile: null,
   error: null,
-  fetching: false,
+  fetching: false
 })
 
 /* ------------- Reducers ------------- */
@@ -67,13 +67,13 @@ export const del = (state, propertiesKeys: Object) => {
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.REQUEST_PROFILE_SETUSERNAME]: request,
   [Types.SUCCESS_PROFILE_SETUSERNAME]: create,
-  [Types.FAILURE_PROFILE_SETUSERNAME]: failure,
-  //--------------------------------------------------
+  [Types.FAILURE_PROFILE_SETUSERNAME]: failure
+  // --------------------------------------------------
 })
 
 /* ------------- Selectors ------------- */
 
 export const ProfileSelectors = {
   // credential cruds - read
-  selectGetProfile: state => state.pf.profile,
+  selectGetProfile: state => state.pf.profile
 }

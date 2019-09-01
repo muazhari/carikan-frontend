@@ -1,7 +1,11 @@
 import React from 'react'
 import { View, TextInput, StyleSheet } from 'react-native'
 
-import { ApplicationStyles, Metrics, Colors } from '../Themes'
+import { ApplicationStyles, MetricsTypes, Colors } from '../Themes'
+
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 const styles = StyleSheet.create({
   ...ApplicationStyles.shape,

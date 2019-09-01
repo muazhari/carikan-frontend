@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+// import thunk from 'redux-thunk'
 import Rehydration from '../Services/Rehydration'
 import ReduxPersist from '../Config/ReduxPersist'
 import Config from '../Config/DebugConfig'
@@ -18,6 +19,9 @@ export default (rootReducer, rootSaga) => {
 
   /* ------------- Analytics Middleware ------------- */
   middleware.push(ScreenTracking)
+
+  /* ------------- Thunk Middleware ------------- */
+  // middleware.push(thunk)
 
   /* ------------- Saga Middleware ------------- */
 

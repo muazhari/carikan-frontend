@@ -66,6 +66,20 @@
 		D82F7B981D0C4A9BA1D4B9CC /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F25B0B8ADAD04FC78CF96B19 /* libRNGoogleSignin.a */; };
 		71F380BAE7C9467BAC37084E /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8EA420F2A0409D8EBACAC1 /* libRNFirebase.a */; };
 		5782BAC0E5A8438FB7E35EAA /* libreact-native-sha256.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4BD97E99CE48908CDD3F55 /* libreact-native-sha256.a */; };
+		D055D3F44499495FA586A85C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66347642CE9E4BFAAFD956F3 /* Poppins-Bold.ttf */; };
+		9B4B542C226D4B1A9AC77ED9 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80F81880AE6C4EBCB88CAA82 /* Poppins-Italic.ttf */; };
+		9B9E52FA918D4B7686B56BF6 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8757BA73ECE6490BBC635B76 /* Poppins-Light.ttf */; };
+		CE0BFE42D0304F35ACE5EA00 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1AAE258002247128A7E8C87 /* Poppins-Medium.ttf */; };
+		DAC2D84B89214393B38D4BC8 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67F29D5BDBFF44A0A46ECE39 /* Poppins-Regular.ttf */; };
+		D878B105EF5E4AFAAAEE3F38 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81B1103CCE3D404E9D32DAF4 /* Poppins-SemiBold.ttf */; };
+		C67C07CE4B374D1391199F53 /* SpaceMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C346D07A0030491187445F78 /* SpaceMono-Regular.ttf */; };
+		F8BE2E56851447B2AEFBEDBA /* libRNSecureRandom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB024937E03471CB0E5D7D5 /* libRNSecureRandom.a */; };
+		E7564409E5224DBFB4D13F6D /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC789B8D14147769DEE04EA /* libRNCamera.a */; };
+		33B4786670AA4D679F0E1208 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F331AB381801481BBFF4AEBA /* libAirMaps.a */; };
+		02684158FCAA472D88B241A1 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7134892E8C48441AB7FF54B9 /* libRNSVG.a */; };
+		45A5227F7DC542CC8FDFA8D0 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47426FED64194DE59B556A5E /* libRNSVG-tvOS.a */; };
+		4A01C11B51AA4309BD107B70 /* libRNPhotoView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4CD10304364EEA801F420E /* libRNPhotoView.a */; };
+		8EBE0224BDCE4654942B6A51 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB918BAC5AE4DA99DCD7631 /* libRCTOrientation.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -408,6 +422,26 @@
 		BA8EA420F2A0409D8EBACAC1 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		202433523F0B46C9B137FB37 /* react-native-sha256.xcodeproj */ = {isa = PBXFileReference; name = "react-native-sha256.xcodeproj"; path = "../node_modules/react-native-sha256/ios/react-native-sha256.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		3B4BD97E99CE48908CDD3F55 /* libreact-native-sha256.a */ = {isa = PBXFileReference; name = "libreact-native-sha256.a"; path = "libreact-native-sha256.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		66347642CE9E4BFAAFD956F3 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; name = "Poppins-Bold.ttf"; path = "../App/Assets/Fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		80F81880AE6C4EBCB88CAA82 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; name = "Poppins-Italic.ttf"; path = "../App/Assets/Fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8757BA73ECE6490BBC635B76 /* Poppins-Light.ttf */ = {isa = PBXFileReference; name = "Poppins-Light.ttf"; path = "../App/Assets/Fonts/Poppins-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B1AAE258002247128A7E8C87 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../App/Assets/Fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		67F29D5BDBFF44A0A46ECE39 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; name = "Poppins-Regular.ttf"; path = "../App/Assets/Fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		81B1103CCE3D404E9D32DAF4 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; name = "Poppins-SemiBold.ttf"; path = "../App/Assets/Fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C346D07A0030491187445F78 /* SpaceMono-Regular.ttf */ = {isa = PBXFileReference; name = "SpaceMono-Regular.ttf"; path = "../App/Assets/Fonts/SpaceMono-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5C5F88E77A4047CBB73F64B5 /* RNSecureRandom.xcodeproj */ = {isa = PBXFileReference; name = "RNSecureRandom.xcodeproj"; path = "../node_modules/react-native-securerandom/ios/RNSecureRandom.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		3AB024937E03471CB0E5D7D5 /* libRNSecureRandom.a */ = {isa = PBXFileReference; name = "libRNSecureRandom.a"; path = "libRNSecureRandom.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		3E377E961CF84AF883B75F8D /* RNCamera.xcodeproj */ = {isa = PBXFileReference; name = "RNCamera.xcodeproj"; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		DFC789B8D14147769DEE04EA /* libRNCamera.a */ = {isa = PBXFileReference; name = "libRNCamera.a"; path = "libRNCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		718C8D298C2E41ADA6800C3B /* AirMaps.xcodeproj */ = {isa = PBXFileReference; name = "AirMaps.xcodeproj"; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F331AB381801481BBFF4AEBA /* libAirMaps.a */ = {isa = PBXFileReference; name = "libAirMaps.a"; path = "libAirMaps.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		33CA49E2A50E488EBFCCF060 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		7134892E8C48441AB7FF54B9 /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		47426FED64194DE59B556A5E /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; name = "libRNSVG-tvOS.a"; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		AC3700A4A46244FFB8036857 /* RNPhotoView.xcodeproj */ = {isa = PBXFileReference; name = "RNPhotoView.xcodeproj"; path = "../node_modules/react-native-photo-view/ios/RNPhotoView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		BA4CD10304364EEA801F420E /* libRNPhotoView.a */ = {isa = PBXFileReference; name = "libRNPhotoView.a"; path = "libRNPhotoView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E74118FDAA3D4D53910B9E34 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; name = "RCTOrientation.xcodeproj"; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		6FB918BAC5AE4DA99DCD7631 /* libRCTOrientation.a */ = {isa = PBXFileReference; name = "libRCTOrientation.a"; path = "libRCTOrientation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +478,12 @@
 				D82F7B981D0C4A9BA1D4B9CC /* libRNGoogleSignin.a in Frameworks */,
 				71F380BAE7C9467BAC37084E /* libRNFirebase.a in Frameworks */,
 				5782BAC0E5A8438FB7E35EAA /* libreact-native-sha256.a in Frameworks */,
+				F8BE2E56851447B2AEFBEDBA /* libRNSecureRandom.a in Frameworks */,
+				E7564409E5224DBFB4D13F6D /* libRNCamera.a in Frameworks */,
+				33B4786670AA4D679F0E1208 /* libAirMaps.a in Frameworks */,
+				02684158FCAA472D88B241A1 /* libRNSVG.a in Frameworks */,
+				4A01C11B51AA4309BD107B70 /* libRNPhotoView.a in Frameworks */,
+				8EBE0224BDCE4654942B6A51 /* libRCTOrientation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +504,7 @@
 				756E8F6D34064EB483F6AE6A /* libRNI18n-tvOS.a in Frameworks */,
 				308BF825C8CA4327A82C5F02 /* libReactNativeConfig-tvOS.a in Frameworks */,
 				C36013EFB372421BB14BCB87 /* libRNDeviceInfo-tvOS.a in Frameworks */,
+				45A5227F7DC542CC8FDFA8D0 /* libRNSVG-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +686,12 @@
 				F604C106F26944B1B823CB67 /* RNGoogleSignin.xcodeproj */,
 				C5DD4A6878B143B1819058B6 /* RNFirebase.xcodeproj */,
 				202433523F0B46C9B137FB37 /* react-native-sha256.xcodeproj */,
+				5C5F88E77A4047CBB73F64B5 /* RNSecureRandom.xcodeproj */,
+				3E377E961CF84AF883B75F8D /* RNCamera.xcodeproj */,
+				718C8D298C2E41ADA6800C3B /* AirMaps.xcodeproj */,
+				33CA49E2A50E488EBFCCF060 /* RNSVG.xcodeproj */,
+				AC3700A4A46244FFB8036857 /* RNPhotoView.xcodeproj */,
+				E74118FDAA3D4D53910B9E34 /* RCTOrientation.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -711,6 +758,13 @@
 				9FF66B7689414B5691E5EEE9 /* Octicons.ttf */,
 				81AAD3D589354E689A0CD124 /* SimpleLineIcons.ttf */,
 				9E41D788C6E64BB2A62257ED /* Zocial.ttf */,
+				66347642CE9E4BFAAFD956F3 /* Poppins-Bold.ttf */,
+				80F81880AE6C4EBCB88CAA82 /* Poppins-Italic.ttf */,
+				8757BA73ECE6490BBC635B76 /* Poppins-Light.ttf */,
+				B1AAE258002247128A7E8C87 /* Poppins-Medium.ttf */,
+				67F29D5BDBFF44A0A46ECE39 /* Poppins-Regular.ttf */,
+				81B1103CCE3D404E9D32DAF4 /* Poppins-SemiBold.ttf */,
+				C346D07A0030491187445F78 /* SpaceMono-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1177,6 +1231,13 @@
 				B1A7D4243DB3431DBCA2F37B /* Octicons.ttf in Resources */,
 				B31FF7CCAF4C4B2DBE750628 /* SimpleLineIcons.ttf in Resources */,
 				B84B6867FE0541E89819B9B5 /* Zocial.ttf in Resources */,
+				D055D3F44499495FA586A85C /* Poppins-Bold.ttf in Resources */,
+				9B4B542C226D4B1A9AC77ED9 /* Poppins-Italic.ttf in Resources */,
+				9B9E52FA918D4B7686B56BF6 /* Poppins-Light.ttf in Resources */,
+				CE0BFE42D0304F35ACE5EA00 /* Poppins-Medium.ttf in Resources */,
+				DAC2D84B89214393B38D4BC8 /* Poppins-Regular.ttf in Resources */,
+				D878B105EF5E4AFAAAEE3F38 /* Poppins-SemiBold.ttf in Resources */,
+				C67C07CE4B374D1391199F53 /* SpaceMono-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,12 +1378,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1334,6 +1389,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Debug;
@@ -1361,12 +1422,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1378,6 +1433,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Release;
@@ -1408,6 +1469,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Debug;
@@ -1437,6 +1504,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Release;
@@ -1472,12 +1545,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1489,6 +1556,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Debug;
@@ -1524,12 +1597,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1541,6 +1608,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Release;
@@ -1575,12 +1648,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1592,6 +1659,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Debug;
@@ -1626,12 +1699,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1643,6 +1710,12 @@
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-sha256\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-securerandom\ios",
+					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-photo-view\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 				);
 			};
 			name = Release;

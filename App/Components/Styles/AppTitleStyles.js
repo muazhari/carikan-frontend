@@ -7,12 +7,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   h1Text: {
-    color: Colors.gold,
+    color: Colors.sky,
     fontFamily: Fonts.type.bold,
     fontSize: Fonts.size.h1,
   },
   subText: {
-    color: Colors.snow,
+    color: Colors.ink,
     fontFamily: Fonts.type.base,
   },
 })

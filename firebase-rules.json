@@ -1,0 +1,62 @@
+{
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      "$userId": {
+        ".read": "auth !== null && auth.uid === $userId",
+        ".write": "auth !== null && auth.uid === $userId",
+        ".validate": "newData.hasChildren(['profile'])",
+
+        "profile": {
+          ".validate": "newData.hasChildren(['displayName', 'email', 'phoneNumber', 'photoURL', 'isNewUser','username', 'qrId'])",
+
+          "displayName": { ".validate": "newData.isString()" },
+          "phoneNumber": { ".validate": "newData.isString()" },
+          "photoURL": { ".validate": "newData.isString()" },
+          "isNewUser": { ".validate": "newData.isBoolean()" },
+          "email": {
+            ".validate": "newData.isString() && root.child('email_lookup/'+newData.val().replace('.', ',')).val() === auth.uid"
+          },
+          "username": {
+            ".validate": "newData.isString() && root.child('username_lookup/'+newData.val()).val() === auth.uid"
+          },
+          "qrId": { ".write": "!data.exists()" }
+        }
+      }
+    },
+
+    "email_lookup": {
+      "$email": {
+        // not readable, cannot get a list of emails!
+        // can only write if this email is not already in the db
+        ".write": "!data.exists() || (auth !== null && auth.uid === newData.val())",
+        // can only write my own uid into this index
+        ".validate": "newData.val() === auth.uid"
+      }
+    },
+    "username_lookup": {
+      "$username": {
+        // not readable, cannot get a list of usernames!
+        // can only write if this username is not already in the db
+        ".write": "!data.exists() || (auth !== null && auth.uid === newData.val())",
+
+        // can only write my own uid into this index
+        ".validate": "newData.val() === auth.uid"
+      }
+    },
+
+    "qrId_lookup": {
+      "$username": {
+        // not readable, cannot get a list of usernames!
+        // can only write if this username is not already in the db
+        ".write": "!data.exists() || (auth !== null && auth.uid === newData.val())",
+
+        // can only write my own uid into this index
+        ".validate": "newData.val() === auth.uid"
+      }
+    }
+  }
+}

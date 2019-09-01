@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
-import { Fonts, Colors, Metrics } from '../../Themes/'
+import { Fonts, Colors, MetricsTypes } from '../../Themes'
+
+const { set: {normal: Metrics} } = MetricsTypes
 
 export default StyleSheet.create({
   button: {
