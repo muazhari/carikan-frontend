@@ -9,7 +9,7 @@ class MetricsTypes {
 
   updateMetrics = () => {
     this.set = { normal: this.normalMetrics(), tabNav: this.tabNavMetrics() }
-    console.tron.log('Metrics Updated', this.set)
+    // console.tron.log('Metrics Updated', this.set)
     // console.tron.log({ width, height }, { sw_Normal, sh_Normal, sr_Normal })
   }
 

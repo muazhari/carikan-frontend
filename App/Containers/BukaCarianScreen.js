@@ -7,6 +7,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TextInput,
+  RefreshControl,
 } from 'react-native'
 import { connect } from 'react-redux'
 
@@ -20,60 +21,35 @@ import AppTitle from '../Components/AppTitle'
 import TouchyScale from '../Components/TouchyScale'
 import TextField from '../Components/TextField'
 
+import PostActions from '../Redux/PostRedux'
+
 // Styles
 import styles from './Styles/BukaCarianScreenStyle'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 const TouchyButton = props => {
   return (
-    <TouchyScale style={[{ justifyContent: 'center' }, props.buttonStyle]} {...props.otherProps}>
-      <Text style={[{ textAlign: 'center' }, props.titleStyle]}>{props.title}</Text>
+    <TouchyScale
+      style={[{ justifyContent: 'center' }, props.buttonStyle]}
+      {...props.otherProps}
+    >
+      <Text style={[{ textAlign: 'center' }, props.titleStyle]}>
+        {props.title}
+      </Text>
     </TouchyScale>
   )
-}
-
-class QRDisplay extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      content: props.content,
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.content) {
-      this.setState({ content: newProps.content })
-    } else {
-      this.setState({ content: 'QR mu' })
-    }
-    this.forceUpdate()
-  }
-
-  render() {
-    const { style, children } = this.props
-    return (
-      <View style={style}>
-        {/* {this.state.content && (
-          // <QRCode
-          //   size={Metrics.screenWidth * 0.6}
-          //   codeStyle="square"
-          //   content={this.state.content}
-          // />
-        )} */}
-        <Text>{this.state.content}</Text>
-        {children}
-      </View>
-    )
-  }
 }
 
 class BukaCarianScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      isStatusBarTransparent: false,
       visibleHeight: Metrics.screenHeight,
-      qrMsg: '',
+      text: '',
     }
     this.isAttempting = false
   }
@@ -85,8 +61,14 @@ class BukaCarianScreen extends Component {
   componentWillMount() {
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this.keyboardDidShow
+    )
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this.keyboardDidHide
+    )
   }
 
   componentWillUnmount() {
@@ -113,43 +95,56 @@ class BukaCarianScreen extends Component {
 
   componentWillReceiveProps(newProps) {
     this.forceUpdate()
-    // Did the login attempt complete?
+    // Did the attempt complete?
     if (this.isAttempting && !newProps.fetching) {
       // this.props.navigation.goBack()
     }
   }
 
-  handleQRMessageBoxInput = text => {
-    this.setState({ qrMsg: text })
+  handleTextBoxInput = text => {
+    this.setState({ text })
+  }
+
+  handlePressTextBox = () => {
+    const { text } = this.state
+    const { attemptCreatePost } = this.props
+    attemptCreatePost(text)
   }
 
   render() {
+    const { isStatusBarTransparent } = this.state
+    const { fetching } = this.props
     return (
-      // <View style={styles.backgroundContainer}>
-      <ScrollView style={[styles.mainContainer, { height: this.state.visibleHeight }]}>
-        <View style={styles.backgroundContainer}>
-          <StatusBar translucent barStyle="white-content" backgroundColor="transparent" />
+      <View style={styles.backgroundContainer}>
+        <ScrollView
+          vertical
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            flexGrow: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <StatusBar
+            barStyle="dark-content"
+            translucent={isStatusBarTransparent}
+            backgroundColor={
+              isStatusBarTransparent ? 'transparent' : Colors.night
+            }
+          />
           <View
             style={{
               flex: 1,
               marginVertical: Metrics.doubleBaseMargin,
               alignItems: 'center',
               justifyContent: 'space-around',
-            }}>
-            <QRDisplay
-              style={{
-                backgroundColor: Colors.fire,
-                width: Metrics.screenWidth * 0.7,
-                height: Metrics.screenWidth * 0.7,
-                borderRadius: 10,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              content={this.state.qrMsg}
-            />
+            }}
+          >
             <TextField
+              multiline
               style={{
-                height: Metrics.screenWidth * 0.2,
+                // height: Metrics.screenWidth * 0.2,
                 width: Metrics.screenWidth * 0.7,
                 backgroundColor: Colors.snow,
                 borderRadius: 10,
@@ -158,32 +153,41 @@ class BukaCarianScreen extends Component {
               placeholderStyle={{
                 textAlign: 'center',
               }}
-              onChangeText={this.handleQRMessageBoxInput}
-              value={this.state.qrMsg}
+              onChangeText={this.handleTextBoxInput}
+              value={this.state.text}
               placeholder="Info yang kamu berikan"
             />
-            <TouchyButton
+            <Button
               buttonStyle={styles.authButton}
               titleStyle={styles.authText}
               title="OK"
-              onPress={() => {
-                this.handleQRMessageBoxInput(this.state.qrMsg)
-              }}
+              onPress={this.handlePressTextBox}
             />
           </View>
-        </View>
-      </ScrollView>
-      // </View>
+        </ScrollView>
+      </View>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    fetching: state.post.fetching,
+    error: state.post.error,
+    posts: state.post.contents,
+    credential: state.auth.credential,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    attemptCreatePost: text => dispatch(PostActions.postCreateRequest(text)),
+    attemptReadPost: id => dispatch(PostActions.postReadRequest(id)),
+    attemptUpdatePost: (postId, text) =>
+      dispatch(PostActions.postUpdateRequest(postId, text)),
+    attemptDeletePost: postId =>
+      dispatch(PostActions.postDeleteRequest(postId)),
+  }
 }
 
 export default connect(

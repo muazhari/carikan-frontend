@@ -27,7 +27,11 @@ class InitialScreen extends React.Component {
     const {} = this.props
     return (
       <View style={styles.backgroundContainer}>
-        <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
+        <StatusBar
+          translucent
+          barStyle="dark-content"
+          backgroundColor={Colors.night}
+        />
         <AppTitle />
 
         <View style={styles.authButtonContainer}>

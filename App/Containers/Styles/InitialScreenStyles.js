@@ -1,13 +1,15 @@
 import { StyleSheet } from 'react-native'
 import { ApplicationStyles, Colors, MetricsTypes, Fonts } from '../../Themes'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   ...ApplicationStyles.shape,
   backgroundContainer: {
-    backgroundColor: Colors.night,
+    backgroundColor: Colors.snow,
     alignItems: 'center',
     justifyContent: 'center',
     height: Metrics.screenHeight,
@@ -29,11 +31,11 @@ export default StyleSheet.create({
     width: Metrics.screenWidth * 0.79,
     height: Metrics.screenHeight * 0.075,
     borderRadius: 15,
-    backgroundColor: Colors.ricePaper,
+    backgroundColor: Colors.sky,
   },
   authText: {
     fontSize: Fonts.size.h6,
     fontFamily: Fonts.type.bold,
-    color: Colors.background,
+    color: Colors.snow,
   },
 })

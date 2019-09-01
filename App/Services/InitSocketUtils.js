@@ -1,6 +1,6 @@
 import SocketUtils from './SocketUtils'
 
-export default function InitSocketUtils() {
+export default function InitSocketUtils () {
   SocketUtils.connect()
   SocketUtils.handleOnConnect()
 

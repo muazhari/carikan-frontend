@@ -7,12 +7,13 @@ import { AsyncStorage } from 'react-native'
 import firebaseTimerFixes from '../Services/firebaseTimerFixes'
 import FireBaseConfig from '../Config/FirebaseConfig'
 
-import GithubActions, { GithubSelectors } from '../Redux/GithubRedux'
+// import GithubActions, { GithubSelectors } from '../Redux/GithubRedux'
 import AuthActions from '../Redux/AuthRedux'
+import PostActions from '../Redux/PostRedux'
 import AppStateActions from '../Redux/AppStateRedux'
 
 // exported to make available for tests
-export const { selectAvatar } = GithubSelectors
+// export const { selectAvatar } = GithubSelectors
 
 // Firbase authState checker
 function getAuthChannel() {
@@ -53,17 +54,17 @@ export function* startup() {
     }
 
     yield call(firebaseTimerFixes.init)
+    yield put(PostActions.postReadRequest())
     yield put(AppStateActions.setRehydrationComplete())
-
     console.tron.log('✨ Firebase connected. ✨')
   } catch (err) {
     yield put(AppStateActions.setRehydrationStatus(err))
     console.tron.log(`Firebase error. ${err}`)
   }
 
-  const avatar = yield select(selectAvatar)
+  // const avatar = yield select(selectAvatar)
   // only get if we don't have it yet
-  if (!is(String, avatar)) {
-    yield put(GithubActions.userRequest('muazhari'))
-  }
+  // if (!is(String, avatar)) {
+  //   yield put(GithubActions.userRequest('muazhari'))
+  // }
 }

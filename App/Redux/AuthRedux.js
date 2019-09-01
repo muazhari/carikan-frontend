@@ -43,7 +43,7 @@ export const success = (state, { credential }) => {
 
 // we've had a problem logging in
 export const failure = (state, { error }) => {
-  return { ...state, fetching: false, error }
+  return { ...state, fetching: false, error, credential: null }
 }
 
 // we've logged out
@@ -59,22 +59,22 @@ export const autoLogin = (state, { credential }) => {
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  //--------------------------------------------------
+  // --------------------------------------------------
   [Types.GOOGLE_LOGIN_REQUEST]: request,
   [Types.GOOGLE_REGISTER_REQUEST]: request,
-  //--------------------------------------------------
+  // --------------------------------------------------
   [Types.LOGIN_REQUEST]: request,
   [Types.LOGIN_SUCCESS]: success,
   [Types.LOGIN_FAILURE]: failure,
-  //--------------------------------------------------
+  // --------------------------------------------------
   [Types.REGISTER_REQUEST]: request,
   [Types.REGISTER_SUCCESS]: success,
   [Types.REGISTER_FAILURE]: failure,
-  //--------------------------------------------------
+  // --------------------------------------------------
   [Types.LOGOUT_REQUEST]: request,
   [Types.LOGOUT_SUCCESS]: logoutSuccess,
   [Types.LOGOUT_FAILURE]: failure,
-  //--------------------------------------------------
+  // --------------------------------------------------
   [Types.AUTO_LOGIN]: autoLogin,
 })
 

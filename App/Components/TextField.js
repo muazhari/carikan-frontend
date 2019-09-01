@@ -15,7 +15,9 @@ import { Images, MetricsTypes, Colors, Fonts } from '../Themes'
 
 import TouchyScale from './TouchyScale'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 export default class TextField extends React.Component {
   constructor(props) {
@@ -39,16 +41,24 @@ export default class TextField extends React.Component {
     }
   }
 
+  handleSize = e => {
+    // this.setState({ height: e.nativeEvent.contentSize.height })
+    if (this.props.onContentSizeChange) {
+      this.props.onContentSizeChange(e)
+    }
+  }
+
   render() {
-    const { placeholder, placeholderStyle, style, ...otherProps } = this.props
+    const { placeholder, placeholderStyle, style, value, ...otherProps } = this.props
     const { isFocused } = this.state
 
     return (
       <TextInput
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        placeholder={!isFocused ? placeholder : ''}
-        style={isFocused ? style : [style, placeholderStyle]}
+        onContentSizeChange={this.handleSize}
+        placeholder={isFocused || value.length > 0 ? '' : placeholder}
+        style={isFocused || value.length > 0 ? style : [style, placeholderStyle]}
         {...otherProps}
       />
     )

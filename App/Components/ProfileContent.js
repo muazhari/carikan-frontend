@@ -1,5 +1,10 @@
 import React from 'react'
-import { View, ActivityIndicator, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import {
+  View,
+  ActivityIndicator,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native'
 import Moment from 'react-moment'
 
 import { Text, Image } from 'react-native-elements'
@@ -16,7 +21,11 @@ const {
 
 const TextContentBar = props => {
   return (
-    <Text numberOfLines={props.numberOfLines || 1} style={props.style} {...props.otherProps}>
+    <Text
+      numberOfLines={props.numberOfLines || 1}
+      style={props.style}
+      {...props.otherProps}
+    >
       {props.children}
     </Text>
   )
@@ -25,7 +34,7 @@ const TextContentBar = props => {
 const TextContent = props => {
   const renderTruncatedFooter = handlePress => {
     return (
-      <Text style={{ color: Colors.sea, marginTop: 5 }} onPress={handlePress}>
+      <Text style={{ color: Colors.sky, marginTop: 5 }} onPress={handlePress}>
         Read more
       </Text>
     )
@@ -33,7 +42,7 @@ const TextContent = props => {
 
   const renderRevealedFooter = handlePress => {
     return (
-      <Text style={{ color: Colors.sea, marginTop: 5 }} onPress={handlePress}>
+      <Text style={{ color: Colors.sky, marginTop: 5 }} onPress={handlePress}>
         Show less
       </Text>
     )
@@ -45,7 +54,8 @@ const TextContent = props => {
       numberOfLines={props.numberOfLines || 3}
       renderTruncatedFooter={renderTruncatedFooter}
       renderRevealedFooter={renderRevealedFooter}
-      {...props.otherProps}>
+      {...props.otherProps}
+    >
       {props.children}
     </ReadMore>
   )
@@ -76,7 +86,7 @@ export default class ProfileContent extends React.Component {
     const { IsPressed } = this.state
     const { contentData } = this.props
 
-    const { displayName, photoURL, message, timeStamp } = contentData
+    const { displayName, photoURL, text, timeStamp } = contentData
 
     return (
       <TouchableOpacity
@@ -97,7 +107,8 @@ export default class ProfileContent extends React.Component {
           paddingHorizontal: Metrics.screenWidth * 0.05,
           borderColor: Colors.haze,
           borderTopWidth: Metrics.screenRatio * 1,
-        }}>
+        }}
+      >
         <Image
           style={{
             width: Metrics.screenWidth * 0.15,
@@ -113,20 +124,23 @@ export default class ProfileContent extends React.Component {
           style={{
             flexDirection: 'column',
             marginRight: Metrics.screenWidth * 0.2,
-          }}>
+          }}
+        >
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
               width: Metrics.screenWidth * 0.7,
-            }}>
+            }}
+          >
             <TextContentBar
               style={{
                 flex: 1,
                 fontSize: Fonts.size.regular,
                 fontWeight: 'bold',
-              }}>
+              }}
+            >
               {displayName}
             </TextContentBar>
 
@@ -137,11 +151,12 @@ export default class ProfileContent extends React.Component {
                 fontSize: Fonts.size.small,
               }}
               element={TextContentBar}
-              fromNow>
+              fromNow
+            >
               {timeStamp}
             </Moment>
           </View>
-          <TextContent>{message}</TextContent>
+          <TextContent>{text}</TextContent>
         </View>
       </TouchableOpacity>
     )

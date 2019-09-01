@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native'
 import { ApplicationStyles, Colors, MetricsTypes, Fonts } from '../../Themes'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,

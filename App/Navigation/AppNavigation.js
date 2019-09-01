@@ -1,5 +1,6 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 
+
 import LoadingScreen from '../Containers/LoadingScreen'
 import LoggedInStackNavigator from './LoggedInStackNavigator'
 import NotLoggedInStackNavigator from './NotLoggedInStackNavigator'
@@ -15,7 +16,7 @@ const PrimaryNav = createStackNavigator(
   },
   {
     // Default config for all screens
-    // initialRouteName: 'LoadingScreen',
+    initialRouteName: 'LoadingScreen',
     headerMode: 'none',
     navigationOptions: {
       headerStyle: styles.header,

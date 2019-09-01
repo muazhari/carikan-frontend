@@ -8,7 +8,9 @@ import Swiper from 'react-native-swiper'
 
 import { Images, MetricsTypes, Colors, Fonts } from '../Themes'
 
-const { set: {tabNav: Metrics} } = MetricsTypes
+const {
+  set: { tabNav: Metrics },
+} = MetricsTypes
 
 // import styles from './Styles/ProfileImagesStyles'
 
@@ -17,24 +19,16 @@ const renderPagination = (index, total, context) => {
 }
 
 export default function ProfileImages(props) {
-  const { photos, containerStyle, imageStyle, placeholderStyle } = props
+  const { imageURLs, containerStyle, imageStyle, placeholderStyle } = props
   return (
     <Swiper
-      style={[
-        {
-          width: Metrics.screenWidth,
-          height: Metrics.screenWidth,
-        },
-        containerStyle,
-      ]}
+      width={Metrics.screenWidth}
+      height={Metrics.screenWidth}
+      style={containerStyle}
       activeDotColor={Colors.snow}
       // showsButtons
     >
-      {[
-        photos,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq5k10mznd3_YuVNlx9oGgBdaG4bzMHx6MTUPX4VKN0bGt6tEBXw',
-        'https://miro.medium.com/max/1050/0*6hcXg1Gq1LZEHfY4.jpg',
-      ].map((url, index) => {
+      {imageURLs.map((url, index) => {
         return (
           <TouchableOpacity key={index} activeOpacity={1}>
             <Image
@@ -51,10 +45,16 @@ export default function ProfileImages(props) {
                 },
                 imageStyle,
               ]}
-              placeholderStyle={[{ backgroundColor: Colors.steel }, placeholderStyle]}
+              placeholderStyle={[
+                { backgroundColor: Colors.steel },
+                placeholderStyle,
+              ]}
               source={{ uri: url }}
               PlaceholderContent={
-                <ActivityIndicator size={Metrics.screenRatio * 50} color={Colors.snow} />
+                <ActivityIndicator
+                  size={Metrics.screenRatio * 50}
+                  color={Colors.snow}
+                />
               }
             />
           </TouchableOpacity>

@@ -40,19 +40,20 @@ class ProfileScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      isStatusBarTransparent: false,
       postText: '',
       contentData: [
         {
           photoURL: 'a',
-          displayName: 'Ragilaaaaaaaaaaaaaaaaaaaaaaaaaa',
-          message:
+          displayName: 'Uwii uwii',
+          text:
             'halo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karr ',
           timeStamp: Date.now(),
         },
         {
           photoURL: 'a',
-          displayName: 'Ragilaaaaaaaaaaaaaaaaaaaaaaaaaa',
-          message:
+          displayName: 'Lebih dari tivii',
+          text:
             'halo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karrhalo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karrhalo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karrhalo karr halo karr halo karr halo karr halo karr halo karr halo karr halo karr ',
           timeStamp: Date.now() + 1,
         },
@@ -61,15 +62,12 @@ class ProfileScreen extends React.Component {
   }
 
   componentWillMount() {
-    this.forceUpdate()
+    // this.forceUpdate()
   }
 
-  componentWillReceiveProps(newProps) {
-    this.forceUpdate()
-    // Did the login attempt complete?
-    if (this.isAttempting && !newProps.fetching) {
-      // this.props.navigation.goBack()
-    }
+  handleDrawerEvent = () => {
+    const { isStatusBarTransparent } = this.state
+    this.setState({ isStatusBarTransparent: !isStatusBarTransparent })
   }
 
   handlePostText = text => {
@@ -82,7 +80,7 @@ class ProfileScreen extends React.Component {
     if (postText) {
       this.setState(prevState => ({
         contentData: [
-          { photoURL, displayName, message: postText, timeStamp: Date.now() },
+          { photoURL, displayName, text: postText, timeStamp: Date.now() },
           ...prevState.contentData,
         ],
       }))
@@ -90,10 +88,9 @@ class ProfileScreen extends React.Component {
   }
 
   render() {
-    const { contentData } = this.state
+    const { contentData, isStatusBarTransparent } = this.state
     const { credential } = this.props
     const profileData = credential
-    profileData.message = credential.email
 
     return (
       <View>
@@ -105,24 +102,47 @@ class ProfileScreen extends React.Component {
             flexDirection: 'column',
             justifyContent: 'space-between',
             alignItems: 'center',
-          }}>
-          <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
-          <ProfileImagesNavBar />
-          <ProfileImages
-            // containerStyle={{ width: Metrics.screenWidth, height: Metrics.screenHeight * 0.2 }}
-            photos={credential.photoURL}
+          }}
+        >
+          <StatusBar
+            barStyle="dark-content"
+            translucent={isStatusBarTransparent}
+            backgroundColor={
+              isStatusBarTransparent ? 'transparent' : Colors.night
+            }
           />
+          <ProfileImagesNavBar
+            backStyle={{}}
+            moreStyle={{}}
+            onPressBack={() => this.props.navigation.goBack()}
+            onPressMore={() => this.props.navigation.openDrawer()}
+          />
+          <ProfileImages
+            containerStyle={{}}
+            imageStyle={{}}
+            placeholderStyle={{}}
+            imageURLs={[
+              credential.photoURL,
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq5k10mznd3_YuVNlx9oGgBdaG4bzMHx6MTUPX4VKN0bGt6tEBXw',
+              'https://miro.medium.com/max/1050/0*6hcXg1Gq1LZEHfY4.jpg',
+            ]}
+          />
+
           <View
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-            }}>
+            }}
+          >
             <ProfileCredentialBar />
             <ProfileCredential onPress={null} profileData={profileData} />
 
             {contentData &&
-              contentData.map(item => <ProfileContent key={item.timeStamp} contentData={item} />)}
+              contentData.map(item => (
+                <ProfileContent key={item.timeStamp} contentData={item} />
+              ))}
           </View>
+
           <View
             style={{
               borderTopWidth: Metrics.screenRatio * 1,
@@ -131,7 +151,8 @@ class ProfileScreen extends React.Component {
               width: Metrics.screenWidth,
               alignItems: 'center',
               paddingTop: Metrics.screenHeight * 0.03,
-            }}>
+            }}
+          >
             <Text>Let him know you are care!</Text>
           </View>
         </ScrollView>

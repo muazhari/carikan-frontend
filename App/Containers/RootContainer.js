@@ -35,18 +35,18 @@ class RootContainer extends Component {
   handleOnRotate = e => {
     MetricsTypes.updateMetrics()
     this.forceUpdate()
-    console.tron.log(
-      `Seharusnya -> ${JSON.stringify({
-        height: MetricsTypes.set.normal.screenHeight,
-        width: MetricsTypes.set.normal.screenWidth,
-      })} (Tanpa Destructuring)`
-    )
-    console.tron.log(
-      `Tapi -> ${JSON.stringify({
-        height: Metrics.screenHeight,
-        width: Metrics.screenWidth,
-      })} (Dengan Destructuring)`
-    )
+    // console.tron.log(
+    //   `Seharusnya -> ${JSON.stringify({
+    //     height: MetricsTypes.set.normal.screenHeight,
+    //     width: MetricsTypes.set.normal.screenWidth,
+    //   })} (Tanpa Destructuring)`
+    // )
+    // console.tron.log(
+    //   `Tapi -> ${JSON.stringify({
+    //     height: Metrics.screenHeight,
+    //     width: Metrics.screenWidth,
+    //   })} (Dengan Destructuring)`
+    // )
   }
 
   render() {

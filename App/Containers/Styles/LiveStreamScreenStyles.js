@@ -1,6 +1,6 @@
-import { Platform, StyleSheet, Dimensions } from 'react-native';
+import { Platform, StyleSheet, Dimensions } from 'react-native'
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   containerBackdrop: {
@@ -299,6 +299,6 @@ const styles = StyleSheet.create({
     color: 'skyblue',
     width: 120
   }
-});
+})
 
-export default styles;
+export default styles

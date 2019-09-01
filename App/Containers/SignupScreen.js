@@ -15,7 +15,11 @@ import {
 import { Button, Icon, Text } from 'react-native-elements'
 
 import { connect } from 'react-redux'
-import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin'
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from 'react-native-google-signin'
 
 import AuthActions from '../Redux/AuthRedux'
 // import ProfileActions from '../Redux/ProfileRedux'
@@ -26,7 +30,9 @@ import AuthForm from '../Components/AuthForm'
 import AuthModal from '../Components/AuthModal'
 import NavBar from '../Components/NavBar'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 class SignupScreen extends React.Component {
   isAttempting = false
@@ -65,8 +71,14 @@ class SignupScreen extends React.Component {
   componentWillMount() {
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this.keyboardDidShow
+    )
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this.keyboardDidHide
+    )
   }
 
   componentWillUnmount() {
@@ -142,18 +154,34 @@ class SignupScreen extends React.Component {
   }
 
   registerRenderPath0 = () => {
-    const { email, password, passwordVisible, buttonLoginHeight, inputRefs } = this.state
+    const {
+      email,
+      password,
+      passwordVisible,
+      buttonLoginHeight,
+      inputRefs,
+    } = this.state
     const { fetching, error } = this.props
     const editable = !fetching && !this.isAttempting
     const pushable = editable && email != '' && password !== ''
-    const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
+    const textInputStyle = editable
+      ? styles.textInput
+      : styles.textInputReadonly
     return (
       <View
         contentContainerStyle={{ justifyContent: 'center' }}
         style={[styles.container, { height: this.state.visibleHeight }]}
-        keyboardShouldPersistTaps="always">
-        <StatusBar translucent barStyle="dark-content" backgroundColor="transparent" />
-        <AuthModal error={error} handleCloseModal={this.handleRegisterFailure} />
+        keyboardShouldPersistTaps="always"
+      >
+        <StatusBar
+          translucent
+          barStyle="dark-content"
+          backgroundColor="transparent"
+        />
+        <AuthModal
+          error={error}
+          handleCloseModal={this.handleRegisterFailure}
+        />
 
         <NavBar
           rightText="Sign In"
@@ -193,7 +221,8 @@ class SignupScreen extends React.Component {
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                }}>
+                }}
+              >
                 <AuthForm
                   ref={ref => {
                     inputRefs.password = ref
@@ -215,8 +244,12 @@ class SignupScreen extends React.Component {
                 <TouchableOpacity
                   hitSlop={{ top: 20, left: 20, right: 25, bottom: 20 }}
                   style={{ right: Metrics.screenWidth * 0.07 }}
-                  onPress={() => this.handleSwitchPasswordView(passwordVisible)}>
-                  <Icon name={passwordVisible ? 'ios-eye-off' : 'ios-eye'} type="ionicon" />
+                  onPress={() => this.handleSwitchPasswordView(passwordVisible)}
+                >
+                  <Icon
+                    name={passwordVisible ? 'ios-eye-off' : 'ios-eye'}
+                    type="ionicon"
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -231,7 +264,10 @@ class SignupScreen extends React.Component {
             disabledTitleStyle={styles.AuthTextDisable}
             buttonStyle={styles.AuthButtonEnable}
             titleStyle={styles.AuthTextEnable}
-            containerStyle={{ position: 'absolute', marginTop: buttonLoginHeight }}
+            containerStyle={{
+              position: 'absolute',
+              marginTop: buttonLoginHeight,
+            }}
             onPress={this.handlePressSetUser}
             title="Register"
           />
@@ -249,18 +285,34 @@ class SignupScreen extends React.Component {
   }
 
   registerRenderPath1 = () => {
-    const { username, email, password, buttonLoginHeight, inputRefs } = this.state
+    const {
+      username,
+      email,
+      password,
+      buttonLoginHeight,
+      inputRefs,
+    } = this.state
     const { fetching, error } = this.props
     const editable = !fetching && !this.isAttempting
     const pushable = editable && username !== ''
-    const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
+    const textInputStyle = editable
+      ? styles.textInput
+      : styles.textInputReadonly
     return (
       <View
         contentContainerStyle={{ justifyContent: 'center' }}
         style={[styles.container, { height: this.state.visibleHeight }]}
-        keyboardShouldPersistTaps="always">
-        <StatusBar translucent barStyle="dark-content" backgroundColor="transparent" />
-        <AuthModal error={error} handleCloseModal={this.handleRegisterFailure} />
+        keyboardShouldPersistTaps="always"
+      >
+        <StatusBar
+          translucent
+          barStyle="dark-content"
+          backgroundColor="transparent"
+        />
+        <AuthModal
+          error={error}
+          handleCloseModal={this.handleRegisterFailure}
+        />
 
         <NavBar
           rightText="Skip"
@@ -304,7 +356,10 @@ class SignupScreen extends React.Component {
             disabledTitleStyle={styles.AuthTextDisable}
             buttonStyle={styles.AuthButtonEnable}
             titleStyle={styles.AuthTextEnable}
-            containerStyle={{ position: 'absolute', marginTop: buttonLoginHeight }}
+            containerStyle={{
+              position: 'absolute',
+              marginTop: buttonLoginHeight,
+            }}
             onPress={this.handlePressSetUsername}
             title="Continue"
           />

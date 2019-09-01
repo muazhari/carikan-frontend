@@ -12,7 +12,11 @@ class LoadingScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
+        <StatusBar
+          translucent
+          barStyle="dark-content"
+          backgroundColor="transparent"
+        />
         <AppTitle />
       </View>
     )

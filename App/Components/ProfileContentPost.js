@@ -7,7 +7,9 @@ import { Images, MetricsTypes, Colors, Fonts } from '../Themes'
 
 import TextField from './TextField'
 
-const { set: {tabNav: Metrics} } = MetricsTypes
+const {
+  set: { tabNav: Metrics },
+} = MetricsTypes
 
 // import styles from './Styles/ProfileContentPostStyles'
 
@@ -59,7 +61,8 @@ export default class ProfileContentPost extends React.Component {
             padding: Metrics.screenHeight * 0.02,
           },
           containerStyle,
-        ]}>
+        ]}
+      >
         <Image
           style={[
             {

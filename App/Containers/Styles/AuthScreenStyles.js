@@ -8,53 +8,53 @@ export default StyleSheet.create({
   ...ApplicationStyles.shape,
   container: {
     paddingTop: Metrics.screenHeight * 0.08,
-    backgroundColor: Colors.snow,
+    backgroundColor: Colors.snow
   },
   pageContent: {
     // backgroundColor: 'yellow',
     alignItems: 'center',
     paddingHorizontal: Metrics.screenWidth * 0.15,
-    paddingBottom: Metrics.screenWidth * 0.8,
+    paddingBottom: Metrics.screenWidth * 0.8
   },
   form: {
     // backgroundColor: 'yellow',
     width: Metrics.screenWidth * 0.75,
-    borderRadius: 4,
+    borderRadius: 4
   },
   row: {
-    paddingVertical: Metrics.doubleBaseMargin,
+    paddingVertical: Metrics.doubleBaseMargin
     // paddingHorizontal: Metrics.doubleBaseMargin,
   },
   rowLabel: {
-    color: Colors.charcoal,
+    color: Colors.charcoal
   },
   textInput: {
     height: Metrics.screenHeight * 0.06,
     width: Metrics.screenWidth * 0.75,
-    color: Colors.coal,
+    color: Colors.coal
   },
   textInputReadonly: {
     height: Metrics.screenHeight * 0.06,
     width: Metrics.screenWidth * 0.75,
-    color: Colors.steel,
+    color: Colors.steel
   },
   AuthRow: {
     paddingBottom: Metrics.doubleBaseMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   AuthGoogleButton: {
     width: Metrics.screenWidth * 0.7,
     height: Metrics.screenHeight * 0.08,
     marginTop: Metrics.screenHeight * 0.6,
-    position: 'absolute',
+    position: 'absolute'
   },
   AuthButtonEnable: {
     width: Metrics.screenWidth * 0.7,
     height: Metrics.screenHeight * 0.075,
     borderRadius: 25,
     backgroundColor: Colors.bluish,
-    padding: 6,
+    padding: 6
   },
   AuthButtonDisable: {
     borderWidth: 1,
@@ -63,35 +63,35 @@ export default StyleSheet.create({
     height: Metrics.screenHeight * 0.075,
     borderRadius: 25,
     backgroundColor: Colors.white,
-    padding: 6,
+    padding: 6
   },
   AuthTextEnable: {
     // textAlign: 'center',
     marginBottom: Metrics.screenHeight * 0.007,
     fontWeight: 'bold',
     fontSize: Fonts.size.h5,
-    color: Colors.silver,
+    color: Colors.silver
   },
   AuthTextDisable: {
     // textAlign: 'center',
     marginBottom: Metrics.screenHeight * 0.007,
     fontWeight: 'bold',
     fontSize: Fonts.size.h5,
-    color: Colors.bluish,
+    color: Colors.bluish
   },
   topLogo: {
     position: 'absolute',
     alignSelf: 'center',
-    resizeMode: 'contain',
+    resizeMode: 'contain'
   },
   h1TextContent: {
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    alignItems: 'flex-start'
     // marginBottom: Metrics.doubleBaseMargin,
   },
   h1Text: {
     color: 'black',
     fontFamily: Fonts.type.bold,
-    fontSize: Fonts.size.h2,
-  },
+    fontSize: Fonts.size.h2
+  }
 })

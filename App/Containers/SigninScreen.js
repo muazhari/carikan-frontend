@@ -15,7 +15,11 @@ import {
 import { Button, Icon, Text } from 'react-native-elements'
 
 import { connect } from 'react-redux'
-import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin'
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from 'react-native-google-signin'
 
 import AuthActions from '../Redux/AuthRedux'
 import styles from './Styles/AuthScreenStyles'
@@ -25,7 +29,9 @@ import AuthForm from '../Components/AuthForm'
 import AuthModal from '../Components/AuthModal'
 import NavBar from '../Components/NavBar'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 class SigninScreen extends React.Component {
   isAttempting = false
@@ -62,8 +68,14 @@ class SigninScreen extends React.Component {
   componentWillMount() {
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this.keyboardDidShow
+    )
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this.keyboardDidHide
+    )
   }
 
   componentWillUnmount() {
@@ -114,7 +126,7 @@ class SigninScreen extends React.Component {
     this.props.attemptFailure(null)
   }
 
-  handleChangeemail = text => {
+  handleChangeEmail = text => {
     this.setState({ email: text })
   }
 
@@ -133,17 +145,30 @@ class SigninScreen extends React.Component {
   }
 
   render() {
-    const { email, password, passwordVisible, buttonLoginHeight, inputRefs } = this.state
+    const {
+      email,
+      password,
+      passwordVisible,
+      buttonLoginHeight,
+      inputRefs,
+    } = this.state
     const { fetching, error } = this.props
     const editable = !fetching && !this.isAttempting
-    const pushable = editable && email !== '' && password !== ''
-    const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
+    const pushAble = editable && email !== '' && password !== ''
+    const textInputStyle = editable
+      ? styles.textInput
+      : styles.textInputReadonly
     return (
       <View
         contentContainerStyle={{ justifyContent: 'center' }}
         style={[styles.container, { height: this.state.visibleHeight }]}
-        keyboardShouldPersistTaps="always">
-        <StatusBar translucent barStyle="dark-content" backgroundColor="transparent" />
+        keyboardShouldPersistTaps="always"
+      >
+        <StatusBar
+          translucent
+          barStyle="dark-content"
+          backgroundColor="transparent"
+        />
         <AuthModal error={error} handleCloseModal={this.handleLoginFailure} />
 
         <NavBar
@@ -170,7 +195,7 @@ class SigninScreen extends React.Component {
                 returnKeyType="next"
                 autoCapitalize="none"
                 autoCorrect={false}
-                onChangeText={this.handleChangeemail}
+                onChangeText={this.handleChangeEmail}
                 underlineColorAndroid="transparent"
                 changeFocus={this.changeInputFocus('password')}
                 blurOnSubmit={false}
@@ -184,7 +209,8 @@ class SigninScreen extends React.Component {
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                }}>
+                }}
+              >
                 <AuthForm
                   ref={ref => {
                     inputRefs.password = ref
@@ -206,8 +232,12 @@ class SigninScreen extends React.Component {
                 <TouchableOpacity
                   hitSlop={{ top: 20, left: 20, right: 25, bottom: 20 }}
                   style={{ right: Metrics.screenWidth * 0.07 }}
-                  onPress={() => this.handleSwitchPasswordView(passwordVisible)}>
-                  <Icon name={passwordVisible ? 'ios-eye-off' : 'ios-eye'} type="ionicon" />
+                  onPress={() => this.handleSwitchPasswordView(passwordVisible)}
+                >
+                  <Icon
+                    name={passwordVisible ? 'ios-eye-off' : 'ios-eye'}
+                    type="ionicon"
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -219,7 +249,8 @@ class SigninScreen extends React.Component {
                   fontWeight: 'bold',
                   color: Colors.bluish,
                   fontSize: Fonts.size.medium,
-                }}>
+                }}
+              >
                 Forgot Password?
               </Text>
             </TouchableOpacity>
@@ -229,7 +260,7 @@ class SigninScreen extends React.Component {
             raised
             loading={this.isAttempting}
             loadingProps={{ color: Colors.bluish }}
-            disabled={!pushable}
+            disabled={!pushAble}
             disabledStyle={styles.AuthButtonDisable}
             disabledTitleStyle={styles.AuthTextDisable}
             buttonStyle={styles.AuthButtonEnable}
@@ -265,11 +296,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    attemptLogin: (email, password) => dispatch(AuthActions.loginRequest(email, password)),
+    attemptLogin: (email, password) =>
+      dispatch(AuthActions.loginRequest(email, password)),
 
     attemptGoogleLogin: () => dispatch(AuthActions.googleLoginRequest()),
 
-    attemptRegister: (email, password) => dispatch(AuthActions.registerRequest(email, password)),
+    attemptRegister: (email, password) =>
+      dispatch(AuthActions.registerRequest(email, password)),
 
     attemptFailure: error => dispatch(AuthActions.loginFailure(error)),
   }

@@ -25,7 +25,9 @@ import AuthForm from '../Components/AuthForm'
 import AuthModal from '../Components/AuthModal'
 import NavBar from '../Components/NavBar'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 class SignupUsernameScreen extends React.Component {
   isAttempting = false
@@ -116,7 +118,7 @@ class SignupUsernameScreen extends React.Component {
     const { username, email, password, buttonLoginHeight, inputRefs } = this.state
     const { fetching, error } = this.props
     const editable = !fetching && !this.isAttempting
-    const pushable = editable && username !== ''
+    const pushAble = editable && username !== ''
     const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
     return (
       <View
@@ -163,7 +165,7 @@ class SignupUsernameScreen extends React.Component {
             raised
             loading={this.isAttempting}
             loadingProps={{ color: Colors.bluish }}
-            disabled={!pushable}
+            disabled={!pushAble}
             disabledStyle={styles.AuthButtonDisable}
             disabledTitleStyle={styles.AuthTextDisable}
             buttonStyle={styles.AuthButtonEnable}

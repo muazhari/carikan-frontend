@@ -13,26 +13,26 @@ const generateSecurePassword = b => {
 }
 
 // attempts to signin
-export function* getLogin(fbaAPI, fbdAPI, { email, password }) {
+export function* getLogin(authfbAPI, authdbAPI, { email, password }) {
   // const email = `${yield call(generateSecurePassword, 10)}@gmail.com`
   try {
     console.tron.log(email, password)
     const auth = firebase.auth()
     // anonymus credential
-    let result = yield call(fbaAPI.currentUser)
+    let result = yield call(authfbAPI.currentUser)
     // check registered auth provider.
     const provider = yield call([auth, auth.fetchSignInMethodsForEmail], email)
 
     // try signin with 'email' provider if doesn't linked yet
     if (provider.includes('password')) {
-      result = yield call(fbaAPI.signInWithEmail, email, password)
+      result = yield call(authfbAPI.signInWithEmail, email, password)
 
       yield put(AuthActions.loginSuccess(result.user))
       console.tron.log(`Firebase signin success. ${result.user.email}`)
     } else {
-      result = yield call(fbaAPI.linkWithEmail, email, password)
+      result = yield call(authfbAPI.linkWithEmail, email, password)
       // doing database works, pushing important & profile data.
-      yield call(fbdAPI.newProfilePush, result.user)
+      yield call(authdbAPI.newProfilePush, result.user)
 
       yield put(AuthActions.registerSuccess(result.user))
       console.tron.log(`Firebase signup success. ${result.email}`)

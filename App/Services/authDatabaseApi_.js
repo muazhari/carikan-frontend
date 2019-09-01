@@ -80,7 +80,7 @@ const claimProfile = (uid, profile) => {
 const createUser = async (uid, profile) => {
   return new Promise((resolve, reject) => {
     return Promise.all([
-      claimEmail(uid, escapeEmail(profile.email)),
+      claimEmail(uid, profile.email),
       claimUsername(uid, profile.username),
       claimProfile(uid, profile),
     ])

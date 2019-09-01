@@ -8,13 +8,13 @@ import TouchyScale from './TouchyScale'
 import { ApplicationStyles, Colors, MetricsTypes, Fonts } from '../Themes'
 
 const {
-  set: { normal: Metrics },
+  set: { normal: Metrics }
 } = MetricsTypes
 
 const iconMap = {
   Buka: { name: 'ios-qr-scanner', type: 'ionicon', color: Colors.silver },
   Carian: { name: 'ios-search', type: 'ionicon', color: Colors.silver },
-  Profile: { name: 'ios-person', type: 'ionicon', color: Colors.silver },
+  Profile: { name: 'ios-person', type: 'ionicon', color: Colors.silver }
 }
 
 const TabIcon = props => {

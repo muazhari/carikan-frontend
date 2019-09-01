@@ -14,7 +14,7 @@ const generateSecurePassword = b => {
 }
 
 // attempts to google register
-export function* getGoogleRegister(fbaAPI, fbdAPI) {
+export function* getGoogleRegister(authfbAPI, authdbAPI) {
   try {
     yield call(GoogleSignin.hasPlayServices, {
       autoResolve: true,
@@ -23,8 +23,8 @@ export function* getGoogleRegister(fbaAPI, fbdAPI) {
 
     const auth = firebase.auth()
     const authGoogleResult = yield call(GoogleSignin.signIn)
-    // anonymus credential
-    let result = yield call(fbaAPI.currentUser)
+    // anonymous credential
+    let result = yield call(authfbAPI.currentUser)
 
     // check registered auth provider.
     const provider = yield call(
@@ -35,20 +35,20 @@ export function* getGoogleRegister(fbaAPI, fbdAPI) {
     // try signin with 'google.com' provider
     if (provider.includes('google.com')) {
       result = yield call(
-        fbaAPI.signInWithGoogle,
+        authfbAPI.signInWithGoogle,
         authGoogleResult.idToken,
         authGoogleResult.accessToken
       )
       yield put(AuthActions.loginSuccess(result.user))
       console.tron.log(`Firebase signin success. ${result.user.email}`)
     } else {
-      result = yield call(fbaAPI.authNewGoogleUser, {
+      result = yield call(authfbAPI.authNewGoogleUser, {
         email: authGoogleResult.user.email,
         idToken: authGoogleResult.idToken,
         accessToken: authGoogleResult.accessToken,
       })
       // doing database works, pushing important & profile data.
-      yield call(fbdAPI.newProfilePush, result.user)
+      yield call(authdbAPI.newProfilePush, result.user)
       yield put(AuthActions.registerSuccess(result.user))
       console.tron.log(`Firebase register success. ${result.user.email}`)
     }

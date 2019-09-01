@@ -46,5 +46,5 @@ export default {
         _clearTimeout(id)
       }
     }
-  },
+  }
 }

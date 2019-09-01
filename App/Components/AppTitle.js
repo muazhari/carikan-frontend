@@ -11,7 +11,7 @@ const AppTitle = props => {
   let { subMessages } = props
 
   if (!subMessages) {
-    subMessages = [{ id: 0, msg: 'Gotong royong kuy' }]
+    subMessages = [{ id: 0, msg: 'Gotong royong kui' }]
   }
   return (
     <View style={[styles.containerText, props.containerStyle]}>

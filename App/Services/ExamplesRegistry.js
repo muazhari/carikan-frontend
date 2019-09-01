@@ -47,5 +47,5 @@ export default {
   renderComponentExamples,
   addComponentExample,
   renderPluginExamples,
-  addPluginExample,
+  addPluginExample
 }

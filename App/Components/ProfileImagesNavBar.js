@@ -12,6 +12,8 @@ const {
 // import styles from './Styles/ProfileImageNavBarStyles'
 
 export default function ProfileImageNavBar(props) {
+  const { containerStyle, backStyle, moreStyle, onPressMore, onPressBack } = props
+
   const spacing = Metrics.screenWidth * 0.37
   const size = Metrics.screenRatio * 30
   const hitSlopSize = Metrics.screenHeight * 0.04
@@ -28,21 +30,28 @@ export default function ProfileImageNavBar(props) {
           zIndex: 1,
           position: 'absolute',
           flexDirection: 'row',
-          top: Metrics.screenWidth * 0.1,
+          // top: Metrics.screenWidth * 0.1,
           paddingVertical: hitSlopSize,
         },
-        props.containerStyle,
+        containerStyle,
       ]}>
-      <TouchableOpacity hitSlop={hitSlop} style={{ marginHorizontal: spacing }}>
+      <TouchableOpacity
+        onPress={onPressBack}
+        hitSlop={hitSlop}
+        style={[backStyle, { marginHorizontal: spacing }]}>
         <Icon size={size} color={Colors.snow} name="ios-arrow-back" type="ionicon" />
       </TouchableOpacity>
 
       <TouchableOpacity
+        onPress={onPressMore}
         hitSlop={hitSlop}
-        style={{
-          transform: [{ rotate: '90deg' }],
-          marginHorizontal: spacing,
-        }}>
+        style={[
+          moreStyle,
+          {
+            transform: [{ rotate: '90deg' }],
+            marginHorizontal: spacing,
+          },
+        ]}>
         <Icon size={size} color={Colors.snow} name="ios-more" type="ionicon" />
       </TouchableOpacity>
     </View>

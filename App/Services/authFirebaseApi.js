@@ -58,7 +58,6 @@ const create = () => {
         const result = await firebase.auth().currentUser.linkWithCredential(credential)
 
         const newCredential = result.user.providerData[0]
-        console.tron.log('NEWCREDENTIAL', newCredential)
         await updateProfile({
           displayName: newCredential.displayName,
           phoneNumber: newCredential.phoneNumber,
@@ -119,7 +118,7 @@ const create = () => {
         const result = await firebase.auth().signInWithCredential(credential)
 
         const newCredential = result.user.providerData[result.user.providerData.length - 1]
-        console.tron.log(newCredential)
+
         await updateProfile({
           displayName: newCredential.displayName,
           phoneNumber: newCredential.phoneNumber,
@@ -166,7 +165,6 @@ const create = () => {
   const authNewGoogleUser = ({ email, idToken, accessToken }) => {
     return new Promise(async (resolve, reject) => {
       try {
-        console.tron.log({ email, idToken, accessToken })
         const auth = firebase.auth()
         let result = await auth.currentUser
 

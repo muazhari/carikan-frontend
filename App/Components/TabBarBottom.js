@@ -42,8 +42,14 @@ class TabBarBottom extends React.Component {
   componentWillMount() {
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this.keyboardDidShow
+    )
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this.keyboardDidHide
+    )
   }
 
   componentWillUnmount() {
@@ -75,7 +81,9 @@ class TabBarBottom extends React.Component {
     const { navigation, jumpTo } = this.props
 
     const focused = index === navigation.state.index
-    const color = focused ? this.props.activeTintColor : this.props.inactiveTintColor
+    const color = focused
+      ? this.props.activeTintColor
+      : this.props.inactiveTintColor
 
     const TabScene = {
       focused,
@@ -84,11 +92,21 @@ class TabBarBottom extends React.Component {
     }
 
     return (
-      <TouchableOpacity key={route.key} style={styles.tabItem} onPress={() => jumpTo(route.key)}>
+      <TouchableOpacity
+        key={route.key}
+        style={styles.tabItem}
+        onPress={() => jumpTo(route.key)}
+      >
         <View style={styles.tabItem}>
           {this.props.renderIcon(TabScene)}
           {this.props.getLabel && (
-            <Text style={{ ...styles.tabText, marginTop: Metrics.screenHeight * 0.01, color }}>
+            <Text
+              style={{
+                ...styles.tabText,
+                marginTop: Metrics.screenHeight * 0.01,
+                color,
+              }}
+            >
               {this.props.getLabel(TabScene)}
             </Text>
           )}

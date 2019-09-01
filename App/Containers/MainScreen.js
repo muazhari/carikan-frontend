@@ -12,7 +12,9 @@ import AppTitle from '../Components/AppTitle'
 
 import AuthActions from '../Redux/AuthRedux'
 
-const { set: {normal: Metrics} } = MetricsTypes
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 class ProfileScreen extends React.Component {
   constructor(props) {

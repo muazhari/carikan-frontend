@@ -3,13 +3,13 @@ export default {
   getRoot: () => {
     return {
       ok: true,
-      data: require('../Fixtures/root.json'),
+      data: require('../Fixtures/root.json')
     }
   },
   getRate: () => {
     return {
       ok: true,
-      data: require('../Fixtures/rateLimit.json'),
+      data: require('../Fixtures/rateLimit.json')
     }
   },
   getUser: username => {
@@ -18,7 +18,7 @@ export default {
     const skellockData = require('../Fixtures/skellock.json')
     return {
       ok: true,
-      data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData,
+      data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
     }
-  },
+  }
 }

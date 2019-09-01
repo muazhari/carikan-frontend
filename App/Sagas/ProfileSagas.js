@@ -3,10 +3,10 @@ import firebase from 'react-native-firebase'
 import ProfileActions from '../Redux/ProfileRedux'
 
 // attempts to google register
-export function* setUsername(fbdAPI, { username }) {
+export function* setUsername(authdbAPI, { username }) {
   try {
     const auth = firebase.auth()
-    yield call(fbdAPI.claimUsername(auth.currentUser.uid, username))
+    yield call(authdbAPI.claimUsername(auth.currentUser.uid, username))
     yield put(ProfileActions.successSetUsername({ username }))
   } catch (err) {
     const error = { code: err.code, message: err.message }

@@ -5,7 +5,7 @@ import AuthActions, { AuthSelectors } from '../Redux/AuthRedux'
 export const { selectIsLoggedIn, selectGetCredential } = AuthSelectors
 
 // attempts to signin
-export function* getAuthed() {
+export function* getAuth() {
   const isLoggedIn = yield select(selectIsLoggedIn)
   const authCredential = yield select(selectGetCredential)
 

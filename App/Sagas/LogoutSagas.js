@@ -21,7 +21,7 @@ export function* getLogout() {
         yield call(GoogleSignin.signOut)
       }
 
-      // yield call(AsyncStorage.clear)
+      yield call(AsyncStorage.clear)
       const result = yield call([auth, auth.signInAnonymously])
       yield put(AuthActions.logoutSuccess(result.user))
 

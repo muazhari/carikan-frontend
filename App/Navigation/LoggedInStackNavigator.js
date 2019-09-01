@@ -1,5 +1,9 @@
 import React from 'react'
-import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation'
+import {
+  createStackNavigator,
+  createMaterialTopTabNavigator,
+  createDrawerNavigator,
+} from 'react-navigation'
 
 import {
   View,
@@ -16,6 +20,10 @@ import { Button, Icon, Text, Image } from 'react-native-elements'
 import ProfileScreen from '../Containers/ProfileScreen'
 import BukaCarianScreen from '../Containers/BukaCarianScreen'
 import CarianPediaScreen from '../Containers/CarianPediaScreen'
+
+import UploadPostScreen from '../Containers/UploadPostScreen'
+
+import ProfileDrawer from '../Components/ProfileDrawer'
 
 import TabIcon from '../Components/TabIcon'
 import TabAddButton from '../Components/TabAddButton'
@@ -42,7 +50,7 @@ ProfileScreen.navigationOptions = {
 }
 
 const tabBarOptions = {
-  activeTintColor: Colors.sea,
+  activeTintColor: Colors.sky,
   inactiveTintColor: Colors.steel,
   showIcon: true,
   showLabel: false,
@@ -85,6 +93,73 @@ const tabBarOptions = {
   //   alignItems: 'center',
   // },
 }
+
+const LoggedInStackNavigator = createMaterialTopTabNavigator(
+  {
+    Buka: {
+      screen: createStackNavigator(
+        {
+          Home: {
+            screen: BukaCarianScreen,
+          },
+          Upload: {
+            screen: UploadPostScreen,
+          },
+        },
+        {
+          headerMode: 'none',
+        }
+      ),
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <TabIcon color={tintColor} label="Buka" />
+        ),
+      },
+    },
+    Carian: {
+      screen: CarianPediaScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <TabIcon color={tintColor} label="Carian" />
+        ),
+      },
+    },
+    Profile: {
+      screen: createDrawerNavigator(
+        {
+          Home: {
+            screen: ProfileScreen,
+          },
+        },
+        {
+          drawerWidth: Metrics.screenWidth * 0.5,
+          drawerPosition: 'right',
+          contentComponent: props => <ProfileDrawer {...props} />,
+        }
+      ),
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <TabIcon color={tintColor} label="Profile" />
+        ),
+      },
+    },
+  },
+  {
+    initialRouteName: 'Carian',
+    order: ['Buka', 'Carian', 'Profile'],
+    backBehavior: 'Carian',
+    lazy: true,
+    swipeEnabled: true,
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    keyboardHidesTabBar: true,
+    tabBarOptions,
+    tabBarComponent: props => <TabBarBottom {...props} />,
+  }
+)
+
+export default LoggedInStackNavigator
+
 //
 // class a extends React.Component {
 //   handleOnRotate = e => {
@@ -270,41 +345,6 @@ const tabBarOptions = {
 //   }
 // }
 
-const LoggedInStackNavigator = createMaterialTopTabNavigator(
-  {
-    Buka: {
-      screen: BukaCarianScreen,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <TabIcon color={tintColor} label="Buka" />,
-      },
-    },
-    Carian: {
-      screen: CarianPediaScreen,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <TabIcon color={tintColor} label="Carian" />,
-      },
-    },
-    Profile: {
-      screen: ProfileScreen,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <TabIcon color={tintColor} label="Profile" />,
-      },
-    },
-  },
-  {
-    initialRouteName: 'Profile',
-    order: ['Buka', 'Carian', 'Profile'],
-    lazy: true,
-    swipeEnabled: true,
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    backBehavior: 'Profile',
-    keyboardHidesTabBar: true,
-    tabBarOptions,
-    tabBarComponent: props => <TabBarBottom {...props} />,
-  }
-)
-
 // const LoggedInStackNavigator = createBottomTabNavigator(
 //   {
 //     Buka: {
@@ -351,5 +391,3 @@ const LoggedInStackNavigator = createMaterialTopTabNavigator(
 //     // },
 //   }
 // )
-
-export default LoggedInStackNavigator

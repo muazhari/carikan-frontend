@@ -6,7 +6,7 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   userRequest: ['username'],
   userSuccess: ['avatar'],
-  userFailure: null,
+  userFailure: null
 })
 
 export const GithubTypes = Types
@@ -18,13 +18,13 @@ export const INITIAL_STATE = Immutable({
   avatar: null,
   fetching: null,
   error: null,
-  username: null,
+  username: null
 })
 
 /* ------------- Selectors ------------- */
 
 export const GithubSelectors = {
-  selectAvatar: state => state.github.avatar,
+  selectAvatar: state => state.github.avatar
 }
 
 /* ------------- Reducers ------------- */
@@ -47,5 +47,5 @@ export const failure = state => state.merge({ fetching: false, error: true, avat
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.USER_REQUEST]: request,
   [Types.USER_SUCCESS]: success,
-  [Types.USER_FAILURE]: failure,
+  [Types.USER_FAILURE]: failure
 })

@@ -4,7 +4,11 @@ import Modal from 'react-native-modal'
 import { View, StyleSheet } from 'react-native'
 import { Button, Icon, Text } from 'react-native-elements'
 
-import { Metrics, Colors, Fonts } from '../Themes'
+import { MetricsTypes, Colors, Fonts } from '../Themes'
+
+const {
+  set: { normal: Metrics },
+} = MetricsTypes
 
 export default class AuthModal extends React.Component {
   // Create a React ref that will be used to store the
